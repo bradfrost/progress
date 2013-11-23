@@ -1,0 +1,311 @@
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<title>  Progress | Brad Frost Web</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" type="text/css" href="http://bradfrostweb.com/wp-content/themes/v6/style.css" media="all" />
+	<style>
+		.progress {
+			padding: 1em;
+		}
+
+		progress, progress[role] {
+			-moz-appearance: none;
+			-webkit-appearance: none;
+			appearance: none;
+			border: none;
+			background: #cdcaa2;
+			background-size: auto;
+			width: 100%;
+			height: 4em;
+		}
+
+		/* Progress bar background */
+		progress::-webkit-progress-bar {
+			background: #cdcaa2;
+		}
+
+		/* Progress bar value */
+		progress::-moz-progress-bar {
+			background: #be6700;
+		}
+
+		progress::-webkit-progress-value {
+			background: #be6700;
+		}
+
+		.anim::-moz-progress-bar {
+			-moz-transition: width 3s ease-out;
+		}
+
+		.anim::-webkit-progress-value {
+			-webkit-transition: width 3s ease-out; 
+      		-o-transition: width 3s ease-out; 
+          	transition: width 3s ease-out; 
+		}
+		
+		.project-progress.start::-moz-progress-bar {
+			width: 0% !important;
+			background: #cdcaa2 !important;
+			
+		}
+
+		.project-progress.start::-webkit-progress-value {
+			width: 0% !important;
+			background: #cdcaa2 !important;
+			
+		}
+
+		.project-list {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.project {
+			position: relative;
+			margin-bottom: 1em;
+		}
+
+		.project h3 {
+			color: #fff;
+			position: absolute;
+			top: 0.2em;
+			left: 1em;
+			line-height: 1;
+			border: 0;
+		}
+
+		/* Project Types */
+		.project-website progress::-moz-progress-bar {
+			background: #110000;
+		}
+
+		.project-website progress::-webkit-progress-value {
+			background: #110000;
+		}
+
+		.project-talk progress::-moz-progress-bar {
+			background: #03015c;
+		}
+
+		.project-talk progress::-webkit-progress-value {
+			background: #03015c;
+		}
+
+		.project-book progress::-moz-progress-bar {
+			background: #194d10;
+		}
+
+		.project-book progress::-webkit-progress-value {
+			background: #194d10;
+		}
+
+		.project-music progress::-moz-progress-bar {
+			background: #7f0712;
+		}
+
+		.project-music progress::-webkit-progress-value {
+			background: #7f0712;
+		}
+
+		.project-art progress::-moz-progress-bar {
+			background: #c1ad00;
+		}
+
+		.project-art progress::-webkit-progress-value {
+			background: #c1ad00;
+		}
+
+		/* Color Key */
+		.key-list {
+			overflow: hidden;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		.key-list li {
+			float: left;
+			color: #fff;
+			font-weight: bold;
+			margin-right: 1em;
+			padding: 1em;
+		}
+
+		.key-product {
+			background: #be6700;
+		}
+
+		.key-website {
+			background: #110000;
+		}
+
+		.key-talk {
+			background: #03015c;
+		}
+
+		.key-book {
+			background: #194d10;
+		}
+
+		.key-music {
+			background: #7f0712;
+		}
+
+		.key-art {
+			background: #c1ad00;
+		}
+	</style>
+</head>
+<body>
+    <div class="main" role="main">
+	<div class="progress">
+		<ul class="project-list" id="project-list">
+			<li class="project project-tool">
+				<h3>Brand</h3>
+				<progress class="project-progress" max="100" value="12">
+					<strong>Progress: 12%</strong>
+				</progress>
+			</li>
+			<li class="project project-tool">
+				<h3>List</h3>
+				<progress class="project-progress" max="100" value="05">
+					<strong>Progress: 05%</strong>
+				</progress>
+			</li>
+			<li class="project project-tool">
+				<h3>Pattern Lab</h3>
+				<progress class="project-progress" max="100" value="88">
+					<strong>Progress: 88%</strong>
+				</progress>
+			</li>
+			<li class="project project-tool">
+				<h3>ish. 2.0</h3>
+				<progress class="project-progress" max="100" value="15">
+					<strong>Progress: 15%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>Pittsburgh Food Bank</h3>
+				<progress class="project-progress" max="100" value="20">
+					<strong>Progress: 20%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>Pattern Lab Website</h3>
+				<progress class="project-progress" max="100" value="70">
+					<strong>Progress: 70%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>Death To Bullshit Blog</h3>
+				<progress class="project-progress" max="100" value="80">
+					<strong>Progress: 80%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>This Is Responsive</h3>
+				<progress class="project-progress" max="100" value="100">
+					<strong>Progress: 100%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>Brad Frost Web</h3>
+				<progress class="project-progress" max="100" value="60">
+					<strong>Progress: 60%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>Flop Custom</h3>
+				<progress class="project-progress" max="100" value="70">
+					<strong>Progress: 70%</strong>
+				</progress>
+			</li>
+			<li class="project project-website">
+				<h3>Wake Up Excited</h3>
+				<progress class="project-progress" max="100" value="05">
+					<strong>Progress: 05%</strong>
+				</progress>
+			</li>
+			<li class="project project-talk">
+				<h3>Atomic Design Keynote</h3>
+				<progress class="project-progress" max="100" value="60">
+					<strong>Progress: 60%</strong>
+				</progress>
+			</li>
+			<li class="project project-talk">
+				<h3>Atomic Design Workshop</h3>
+				<progress class="project-progress" max="100" value="10">
+					<strong>Progress: 10%</strong>
+				</progress>
+			</li>
+			<li class="project project-book">
+				<h3>Death To Bullshit Book</h3>
+				<progress class="project-progress" max="100" value="02">
+					<strong>Progress: 02%</strong>
+				</progress>
+			</li>
+			<li class="project project-music">
+				<h3>Album</h3>
+				<progress class="project-progress" max="100" value="05">
+					<strong>Progress: 05%</strong>
+				</progress>
+			</li>
+			<li class="project project-art">
+				<h3>TV Painting</h3>
+				<progress class="project-progress" max="100" value="60">
+					<strong>Progress: 60%</strong>
+				</progress>
+			</li>
+			<li class="project project-art">
+				<h3>Dual Tone Painting</h3>
+				<progress class="project-progress" max="100" value="10">
+					<strong>Progress: 10%</strong>
+				</progress>
+			</li>
+			<li class="project project-art">
+				<h3>Spiral Painting</h3>
+				<progress class="project-progress" max="100" value="50">
+					<strong>Progress: 50%</strong>
+				</progress>
+			</li>
+		</ul>
+
+		<div class="key">
+			<ul class="key-list">
+				<li class="key-product">Tool</li>
+				<li class="key-website">Website</li>
+				<li class="key-music">Music</li>
+				<li class="key-art">Art</li>
+				<li class="key-book">Book</li>
+			</ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var progress = document.querySelectorAll(".project-progress");
+
+		[].forEach.call(progress, function(el) {
+			el.classList.add("start");
+			setTimeout(function() { el.classList.remove("start"); el.classList.add("anim")  }, 10);
+		});
+	</script>
+
+</div><!--End role=main-->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2687475-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+</body>
+</html>
