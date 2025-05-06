@@ -327,4 +327,20 @@ li:last-child {
     background: rgba(205, 202, 162, 0.16);
 }
 
+/* Priority Section */
+.priority {
+    background: var(--color-light-cream);
+    border: 2px solid var(--color-orange);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.priority h2 {
+    color: var(--color-orange);
+}
+
+.priority li:last-child {
+    margin-bottom: 0;
+}
+
 
