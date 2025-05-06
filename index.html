@@ -3,1071 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Brad Frost Project Tracker</title>
-    <style>
-        /* Reset */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Color Variables from Brad's Stylesheet */
-        :root {
-            /* Brand Colors from Image */
-            --color-cream: #f6f5de;
-            --color-light-cream: #f8f7e7;
-            --color-tan: #e5e3cb;
-            --color-olive: #a29e5e;
-            --color-brown: #785c41;
-            --color-dark-brown: #100;
-            --color-orange: #be6700;
-            --color-blue: #66ccff;
-            --color-navy: #151340;
-            
-            /* Secondary Colors from Image */
-            --color-rust: #c57644;
-            --color-gold: #c9b84a;
-            --color-mustard: #d2ae4e;
-            
-            /* UI Constants */
-            --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-xxl: 3rem;
-            
-            --border-radius: 0px;
-            --box-shadow-standard: 0 10px 0 -5px var(--color-orange), 
-                                0 20px 0 -10px var(--color-blue),
-                                0 30px 0 -16px var(--color-tan);
-        }
-
-        /* Base Styles */
-        body {
-            font-family: "proxima-nova", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--color-dark-brown);
-            background: var(--color-cream);
-            padding: var(--spacing-xl);
-        }
-
-        h1, h2, h3, h4 {
-            font-family: "Oswald", "Impact", sans-serif;
-            text-transform: lowercase;
-            line-height: 1.2;
-            margin-bottom: var(--spacing-md);
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-top: var(--spacing-xl);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-        }
-
-        a {
-            color: var(--color-olive);
-            text-decoration: none;
-            transition: all 0.15s ease;
-        }
-
-        a:hover, a:focus {
-            color: var(--color-orange);
-        }
-
-        /* Layout */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header {
-            margin-bottom: var(--spacing-xl);
-            padding-bottom: var(--spacing-lg);
-            border-bottom: 3px solid var(--color-dark-brown);
-        }
-
-        /* Accordion Styles */
-        .accordion {
-            margin-bottom: var(--spacing-xxl);
-        }
-
-        .accordion-header {
-            background: rgba(205, 202, 162, 0.16);
-            padding: var(--spacing-md);
-            border: 3px solid var(--color-dark-brown);
-            font-family: "Oswald", "Impact", sans-serif;
-            font-size: 1.5rem;
-            text-transform: lowercase;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0;
-            transition: all 0.2s ease;
-        }
-
-        .accordion-header:hover {
-            background: rgba(205, 202, 162, 0.3);
-        }
-
-        .accordion-header::after {
-            content: '+';
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .accordion-header.active::after {
-            content: '-';
-        }
-
-        .accordion-content {
-            display: none;
-            border: 3px solid var(--color-dark-brown);
-            border-top: none;
-            padding: var(--spacing-md);
-            background: var(--color-light-cream);
-            box-shadow: 0 10px 0 -5px var(--color-tan);
-        }
-
-        .accordion-content.active {
-            display: block;
-        }
-
-        /* Project List Styles */
-        .project-list {
-            list-style: none;
-        }
-
-        .project-item {
-            padding: var(--spacing-md) 0;
-            border-bottom: 1px solid var(--color-tan);
-            position: relative;
-        }
-
-        .project-item:last-child {
-            border-bottom: none;
-        }
-
-        .project-item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            cursor: pointer;
-        }
-
-        .project-title {
-            flex: 1;
-            margin: 0;
-            font-size: 1.2rem;
-            position: relative;
-            padding-right: var(--spacing-lg);
-        }
-
-        .project-priority {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            margin-right: var(--spacing-sm);
-            border: 2px solid var(--color-dark-brown);
-            flex-shrink: 0;
-        }
-
-        .priority-high {
-            background: var(--color-orange);
-        }
-
-        .priority-medium {
-            background: var(--color-gold);
-        }
-
-        .priority-low {
-            background: var(--color-blue);
-        }
-
-        .project-status {
-            font-size: 0.8rem;
-            padding: var(--spacing-xs) var(--spacing-sm);
-            border-radius: var(--border-radius);
-            flex-shrink: 0;
-            margin-left: var(--spacing-sm);
-        }
-
-        .status-not-started {
-            background: var(--color-tan);
-        }
-
-        .status-in-progress {
-            background: var(--color-gold);
-        }
-
-        .status-near-completion {
-            background: var(--color-olive);
-            color: white;
-        }
-
-        .status-completed {
-            background: var(--color-brown);
-            color: white;
-        }
-
-        .status-on-hold {
-            background: var(--color-rust);
-            color: white;
-        }
-
-        .project-details {
-            display: none;
-            padding: var(--spacing-md);
-            margin-top: var(--spacing-md);
-            background: rgba(205, 202, 162, 0.1);
-            border-left: 3px solid var(--color-olive);
-        }
-
-        .project-details.active {
-            display: block;
-        }
-
-        .project-dates {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .project-progress-container {
-            margin: var(--spacing-md) 0;
-        }
-
-        .project-status-bar {
-            height: 10px;
-            background: var(--color-tan);
-            margin-top: var(--spacing-xs);
-            position: relative;
-        }
-
-        .project-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            transition: width 0.5s ease;
-        }
-
-        .progress-high {
-            background: var(--color-orange);
-        }
-
-        .progress-medium {
-            background: var(--color-gold);
-        }
-
-        .progress-low {
-            background: var(--color-olive);
-        }
-
-        .project-notes {
-            margin-top: var(--spacing-md);
-            font-style: italic;
-        }
-
-        .project-milestones {
-            margin-top: var(--spacing-md);
-        }
-
-        .milestone-item {
-            display: flex;
-            justify-content: space-between;
-            margin-top: var(--spacing-xs);
-            padding-top: var(--spacing-xs);
-            border-top: 1px dashed var(--color-tan);
-        }
-
-        .days-left {
-            font-weight: bold;
-        }
-
-        .days-urgent {
-            color: var(--color-orange);
-        }
-
-        /* Dashboard Metrics */
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-lg);
-            margin: var(--spacing-xl) 0;
-        }
-
-        .metric-card {
-            background: var(--color-light-cream);
-            border: 3px solid var(--color-dark-brown);
-            padding: var(--spacing-md);
-            box-shadow: 0 10px 0 -5px var(--color-tan);
-        }
-
-        .metric-title {
-            font-size: 1rem;
-            margin-bottom: var(--spacing-md);
-            color: var(--color-olive);
-        }
-
-        .metric-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--spacing-sm);
-            padding-bottom: var(--spacing-xs);
-            border-bottom: 1px solid var(--color-tan);
-        }
-
-        .metric-item:last-child {
-            margin-bottom: 0;
-            border-bottom: none;
-        }
-
-        .milestone-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: var(--spacing-lg);
-            margin-bottom: var(--spacing-xxl);
-            border: 3px solid var(--color-dark-brown);
-            box-shadow: var(--box-shadow-standard);
-        }
-
-        .milestone-table th {
-            text-align: left;
-            padding: var(--spacing-sm);
-            background: rgba(205, 202, 162, 0.16);
-            border-bottom: 3px solid var(--color-dark-brown);
-            font-family: "Oswald", "Impact", sans-serif;
-            text-transform: lowercase;
-            font-weight: normal;
-        }
-
-        .milestone-table td {
-            padding: var(--spacing-sm);
-            border-bottom: 1px solid var(--color-tan);
-        }
-
-        .milestone-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .milestone-table tbody tr:hover {
-            background: rgba(205, 202, 162, 0.16);
-        }
-
-        footer {
-            margin-top: var(--spacing-xl);
-            padding-top: var(--spacing-lg);
-            border-top: 3px solid var(--color-dark-brown);
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--color-olive);
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <h1>Brad Frost Project Tracker</h1>
-            <p>Track all projects, courses, books, podcasts, speaking engagements, music and personal activities</p>
-        </header>
+        <main>
+            <h2>📺 Courses</h2>
+            <h3>🔥 Subatomic: Design Tokens Course</h3>
+            <ul>
+                <li>Update website for launch</li>
+				<li>Clear board</li>
+            </ul>
+            <h3>🔥 Atomic Design Certification Course</h3>
+            <ul>
+                <li>Design website</li>
+                <li>Prepare preorder</li>
+                <li>Record Trailer</li>
+                <li>Record preorder video</li>
+            </ul>
+            <h3>The Lost Art of Web Design Course</h3>
+            <ul>
+                <li>Record ongoing video</li>
+            </ul>
+            <h3>Front-of-the-Front-End Course</h3>
+            <ul>
+                <li>Review outline with Ian</li>
+                <li>Design website</li>
+                <li>Prepare preorder</li>
+                <li>Record Trailer</li>
+                <li>Record preorder video</li>
+            </ul>
 
-        <div id="accordions-container">
-            <!-- Accordions will be added here by JavaScript -->
-        </div>
+            <h2>📚 Books</h2>
+            <h3>Subatomic: Design Tokens</h3>
+            <ul>
+                <li>Update website for launch</li>
+            </ul>
+            <h3>Atomic Design, 2nd Edition</h3>
+            <ul>
+                <li>Make notes about Atomic Design book</li>
+            </ul>
 
-        <h2>Project Overview</h2>
-        <div class="metrics">
-            <div class="metric-card">
-                <h3 class="metric-title">By Category</h3>
-                <div id="category-metrics">
-                    <!-- Category metrics will be inserted here -->
-                </div>
-            </div>
-            <div class="metric-card">
-                <h3 class="metric-title">By Priority</h3>
-                <div id="priority-metrics">
-                    <!-- Priority metrics will be inserted here -->
-                </div>
-            </div>
-            <div class="metric-card">
-                <h3 class="metric-title">By Status</h3>
-                <div id="status-metrics">
-                    <!-- Status metrics will be inserted here -->
-                </div>
-            </div>
-        </div>
+            <h2>🎙️ Podcasts</h2>
+            <h3>Wake Up Excited Podcast</h3>
+            <ul>
+                <li>Record first episode</li>
+                <li>Set up guest lineup</li>
+            </ul>
+            <h3>OpenUp Podcast with Smashing Magazine</h3>
+            <ul>
+                <li>Record Episode 2</li>
+                <li>Plan future episodes</li>
+            </ul>
+            <h3>Subatomic Design Tokens Podcast</h3>
+            <ul>
+                <li>Record next episode</li>
+            </ul>
 
-        <h2>Upcoming Milestones</h2>
-        <table class="milestone-table">
-            <thead>
-                <tr>
-                    <th>Project</th>
-                    <th>Milestone</th>
-                    <th>Date</th>
-                    <th>Days Left</th>
-                </tr>
-            </thead>
-            <tbody id="milestones-container">
-                <!-- Milestones will be inserted here -->
-            </tbody>
-        </table>
+            <h2>🎤 Speaking</h2>
+            <h3>UXLx Lisbon</h3>
+            <ul>
+                <li>Prepare workshop materials</li>
+                <li>Finalize talk slides</li>
+            </ul>
+            <h3>CSS Day Amsterdam</h3>
+            <ul>
+                <li>Prepare workshop with Ian</li>
+                <li>Finalize talk slides</li>
+            </ul>
+            <h3>Berlin Speaking Event</h3>
+            <ul>
+                <li>Develop talk outline</li>
+                <li>Research content</li>
+            </ul>
+
+            <h2>🎸 Music</h2>
+            
+            <h3>Music Collaboration Platform</h3>
+            <ul>
+                <li>Research platform options</li>
+                <li>Define requirements</li>
+            </ul>
+            <h3>🔥 Frosty Nightz</h3>
+            <ul>
+                <li>Follow up with musicians for May 10th session</li>
+                <li>Clean up basement</li>
+            </ul>
+
+            <h2>✍️ Writing</h2>
+			<h3>🔥 Design Better EIR article</h3>
+            <ul>
+                <li>Write article</li>
+            </ul>
+			
+            <h3>Newsletter & Blog Revitalization</h3>
+            <ul>
+                <li>Set up publishing schedule</li>
+                <li>Write first newsletter</li>
+                <li>Update blog design</li>
+            </ul>
+
+            <h2>🎨 Art</h2>
+            <h3>Outside The Box</h3>
+            <ul>
+                <li>Develop concept</li>
+                <li>Create initial sketches</li>
+            </ul>
+            <h3>With Utmost Sincerity</h3>
+            <ul>
+                <li>Plan series</li>
+                <li>Start first piece</li>
+            </ul>
+
+            <h2>🏔️ Personal</h2>
+            <h3>Lisbon/Switzerland/Amsterdam Trip</h3>
+            <ul>
+                <li>Book accommodations</li>
+                <li>Plan itinerary</li>
+                <li>Pack for trip</li>
+            </ul>
+        </main>
 
         <footer>
             <p>Last updated: May 4, 2025</p>
         </footer>
     </div>
-
-    <script>
-        // Project data
-        const projectsData = [
-            {
-                id: 1,
-                name: "Subatomic: Design Tokens Course",
-                category: "COURSE",
-                priority: "HIGH",
-                status: "COMPLETED",
-                progress: 100,
-                startDate: "2024-09-01",
-                endDate: "2025-04-30",
-                keyMilestones: [
-                    { date: "2025-04-30", title: "Course completion" },
-                    { date: "2025-02-15", title: "Figma & code sample architecture release" }
-                ],
-                notes: "Over 10 hours of in-depth videos completed. Available for purchase."
-            },
-            {
-                id: 2,
-                name: "Subatomic Book",
-                category: "BOOK",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 50,
-                startDate: "2025-01-15",
-                endDate: "2025-08-30",
-                keyMilestones: [
-                    { date: "2025-05-30", title: "First draft completion" },
-                    { date: "2025-08-15", title: "Final manuscript due" }
-                ],
-                notes: "Based on the design tokens course. Working with editor Owen Gregory."
-            },
-            {
-                id: 3,
-                name: "Atomic Design Certification Course",
-                category: "COURSE",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 15,
-                startDate: "2025-05-01",
-                endDate: "2025-08-30",
-                keyMilestones: [
-                    { date: "2025-05-18", title: "Preorder launch (before Portugal trip)" },
-                    { date: "2025-08-15", title: "Full course launch" }
-                ],
-                notes: "Completion-based certification program. Content will inform 2nd edition of book."
-            },
-            {
-                id: 4,
-                name: "Atomic Design, 2nd Edition",
-                category: "BOOK",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 20,
-                startDate: "2025-04-01",
-                endDate: "2025-12-15",
-                keyMilestones: [
-                    { date: "2025-09-30", title: "First draft completion" },
-                    { date: "2025-11-30", title: "Final manuscript due" }
-                ],
-                notes: "Updated content based on certification course development."
-            },
-            {
-                id: 5,
-                name: "The Lost Art of Web Design Course",
-                category: "COURSE",
-                priority: "MEDIUM",
-                status: "NOT_STARTED",
-                progress: 5,
-                startDate: "2025-07-01",
-                endDate: "2026-03-30",
-                keyMilestones: [
-                    { date: "2025-10-15", title: "Course outline completion" },
-                    { date: "2026-01-30", title: "First module recording" }
-                ],
-                notes: "Slower-burn project exploring fundamental web design principles."
-            },
-            {
-                id: 6,
-                name: "Front-of-the-Front-End Course",
-                category: "COURSE",
-                priority: "MEDIUM",
-                status: "NOT_STARTED",
-                progress: 10,
-                startDate: "2025-09-01",
-                endDate: "2026-02-28",
-                keyMilestones: [
-                    { date: "2025-11-15", title: "Course outline completion" }
-                ],
-                notes: "Led by Ian, bridges design & development."
-            },
-            {
-                id: 7,
-                name: "Wake Up Excited Podcast",
-                category: "PODCAST",
-                priority: "MEDIUM",
-                status: "IN_PROGRESS",
-                progress: 25,
-                startDate: "2025-03-01",
-                endDate: "2025-12-31",
-                keyMilestones: [
-                    { date: "2025-06-01", title: "First episode launch" },
-                    { date: "2025-07-15", title: "Guest lineup completion" }
-                ],
-                notes: "Interviews with exuberant creatives. Blends personal insight with promotion of work."
-            },
-            {
-                id: 8,
-                name: "OpenUp Podcast with Smashing Magazine",
-                category: "PODCAST",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 60,
-                startDate: "2025-02-19",
-                endDate: "2025-12-31",
-                keyMilestones: [
-                    { date: "2025-04-23", title: "Episode 2 release" }
-                ],
-                notes: "Advice show with Geoff Graham addressing the human side of tech industry."
-            },
-            {
-                id: 9,
-                name: "Subatomic Design Tokens Podcast",
-                category: "PODCAST",
-                priority: "MEDIUM",
-                status: "IN_PROGRESS",
-                progress: 40,
-                startDate: "2025-02-01",
-                endDate: "2025-12-31",
-                keyMilestones: [
-                    { date: "2025-05-15", title: "Next episode release" }
-                ],
-                notes: "Accompaniment to the Subatomic design tokens course."
-            },
-            {
-                id: 10,
-                name: "UXLx Lisbon - Speaking & Workshop",
-                category: "SPEAKING",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 70,
-                startDate: "2025-05-01",
-                endDate: "2025-05-20",
-                keyMilestones: [
-                    { date: "2025-05-18", title: "Event start" }
-                ],
-                notes: "Advanced Design Systems workshop & Themeable Design Systems talk."
-            },
-            {
-                id: 11,
-                name: "CSS Day Amsterdam - Speaking & Workshop",
-                category: "SPEAKING",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 60,
-                startDate: "2025-05-01",
-                endDate: "2025-06-06",
-                keyMilestones: [
-                    { date: "2025-06-04", title: "Advanced Design Tokens workshop with Ian" },
-                    { date: "2025-06-05", title: "CSS Day conference start" }
-                ],
-                notes: "Will run Advanced Design Tokens workshop with Ian before conference."
-            },
-            {
-                id: 12,
-                name: "Berlin Speaking Event (November)",
-                category: "SPEAKING",
-                priority: "MEDIUM",
-                status: "NOT_STARTED",
-                progress: 10,
-                startDate: "2025-10-01",
-                endDate: "2025-11-30",
-                keyMilestones: [
-                    { date: "2025-11-15", title: "Approximate event date" }
-                ],
-                notes: "Talk explores trauma, family, spirituality, music, Buddhist ideas. Possibly titled 'Live, Laugh, Love'."
-            },
-            {
-                id: 13,
-                name: "Newsletter & Blog Revitalization",
-                category: "WRITING",
-                priority: "LOW",
-                status: "IN_PROGRESS",
-                progress: 30,
-                startDate: "2025-03-01",
-                endDate: "2025-12-31",
-                keyMilestones: [
-                    { date: "2025-06-01", title: "Regular publishing schedule established" }
-                ],
-                notes: "Reviving list (~17,000 subs). Authentically share thoughts and sell products."
-            },
-            {
-                id: 14,
-                name: "Frostapalooza Music Event",
-                category: "MUSIC",
-                priority: "LOW",
-                status: "NOT_STARTED",
-                progress: 5,
-                startDate: "2025-08-01",
-                endDate: "2025-10-31",
-                keyMilestones: [
-                    { date: "2025-10-15", title: "Tentative event date" }
-                ],
-                notes: "Big concert in Pittsburgh. Creative event organizing."
-            },
-            {
-                id: 15,
-                name: "Music Collaboration Platform",
-                category: "MUSIC",
-                priority: "MEDIUM",
-                status: "NOT_STARTED",
-                progress: 10,
-                startDate: "2025-06-01",
-                endDate: "2026-06-30",
-                keyMilestones: [
-                    { date: "2025-09-01", title: "Initial concept development" }
-                ],
-                notes: "Fork/remix model, Creative Commons licenses."
-            },
-            {
-                id: 16,
-                name: "Basement Jam Sessions",
-                category: "MUSIC",
-                priority: "LOW",
-                status: "IN_PROGRESS",
-                progress: 20,
-                startDate: "2025-01-01",
-                endDate: "2025-12-31",
-                keyMilestones: [],
-                notes: "Regular jam sessions in the 1974 time machine basement."
-            },
-            {
-                id: 17,
-                name: "Artwork Series Development",
-                category: "ART",
-                priority: "LOW",
-                status: "NOT_STARTED",
-                progress: 5,
-                startDate: "2025-07-01",
-                endDate: "2025-12-31",
-                keyMilestones: [],
-                notes: "Visual prompts series (grannies w/ gold chains, Scoochie McLaren, etc.)"
-            },
-            {
-                id: 18,
-                name: "Family Lisbon Trip",
-                category: "PERSONAL",
-                priority: "HIGH",
-                status: "IN_PROGRESS",
-                progress: 40,
-                startDate: "2025-05-15",
-                endDate: "2025-05-25",
-                keyMilestones: [
-                    { date: "2025-05-18", title: "Departure" }
-                ],
-                notes: "Family vacation with Melissa and Ella before the work portion of the trip."
-            },
-            {
-                id: 19,
-                name: "Switzerland Hiking Trip",
-                category: "PERSONAL",
-                priority: "HIGH", 
-                status: "NOT_STARTED",
-                progress: 20,
-                startDate: "2025-05-25",
-                endDate: "2025-06-03",
-                keyMilestones: [],
-                notes: "Trip with Ian to Interlaken for hiking and exploring."
-            }
-        ];
-
-        // Category definitions
-        const categories = {
-            COURSE: { name: 'Courses', icon: '📹', order: 1 },
-            BOOK: { name: 'Books', icon: '📚', order: 3 },
-            PODCAST: { name: 'Podcasts', icon: '🎙️', order: 5 },
-            SPEAKING: { name: 'Speaking', icon: '🎤', order: 2 },
-            MUSIC: { name: 'Music', icon: '🎸', order: 4 },
-            WRITING: { name: 'Writing', icon: '✍️', order: 6 },
-            ART: { name: 'Art', icon: '🎨', order: 7 },
-            PERSONAL: { name: 'Personal', icon: '🏔️', order: 8 }
-        };
-
-        const priorities = {
-            HIGH: { name: 'High', color: 'priority-high' },
-            MEDIUM: { name: 'Medium', color: 'priority-medium' },
-            LOW: { name: 'Low', color: 'priority-low' }
-        };
-
-        const statuses = {
-            NOT_STARTED: { name: 'Not Started', color: 'status-not-started' },
-            IN_PROGRESS: { name: 'In Progress', color: 'status-in-progress' },
-            NEAR_COMPLETION: { name: 'Near Completion', color: 'status-near-completion' },
-            COMPLETED: { name: 'Completed', color: 'status-completed' },
-            ON_HOLD: { name: 'On Hold', color: 'status-on-hold' }
-        };
-
-        // DOM elements
-        const accordionsContainer = document.getElementById('accordions-container');
-        const milestonesContainer = document.getElementById('milestones-container');
-        const categoryMetricsContainer = document.getElementById('category-metrics');
-        const priorityMetricsContainer = document.getElementById('priority-metrics');
-        const statusMetricsContainer = document.getElementById('status-metrics');
-
-        // Format date for display
-        function formatDate(dateString) {
-            if (!dateString) return 'TBD';
-            const date = new Date(dateString);
-            return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-        }
-
-        // Calculate days until a date
-        function getDaysUntil(dateString) {
-            if (!dateString) return null;
-            const targetDate = new Date(dateString);
-            const today = new Date();
-            const diffTime = targetDate - today;
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            return diffDays;
-        }
-
-        // Get progress color class
-        function getProgressColorClass(progress) {
-            if (progress >= 75) return 'progress-high';
-            if (progress >= 25) return 'progress-medium';
-            return 'progress-low';
-        }
-
-        // Render accordions with project lists
-        function renderAccordions() {
-            accordionsContainer.innerHTML = '';
-            
-            // Group projects by category
-            const groupedProjects = {};
-            
-            Object.keys(categories).forEach(category => {
-                groupedProjects[category] = projectsData.filter(project => project.category === category);
-            });
-            
-            // Sort categories by their defined order
-            const sortedCategories = Object.entries(categories)
-                .sort((a, b) => a[1].order - b[1].order);
-            
-            // Create an accordion for each category
-            sortedCategories.forEach(([categoryKey, categoryInfo]) => {
-                const projects = groupedProjects[categoryKey];
-                
-                if (projects.length === 0) return; // Skip empty categories
-                
-                // Create accordion container
-                const accordionSection = document.createElement('div');
-                accordionSection.className = 'accordion';
-                
-                // Create accordion header
-                const accordionHeader = document.createElement('h2');
-                accordionHeader.className = 'accordion-header';
-                accordionHeader.innerHTML = `${categoryInfo.icon} ${categoryInfo.name} <span class="count">(${projects.length})</span>`;
-                accordionHeader.addEventListener('click', () => {
-                    accordionHeader.classList.toggle('active');
-                    accordionContent.classList.toggle('active');
-                });
-                
-                // Create accordion content
-                const accordionContent = document.createElement('div');
-                accordionContent.className = 'accordion-content';
-                
-                // Create project list
-                const projectList = document.createElement('ul');
-                projectList.className = 'project-list';
-                
-                // Sort projects by priority (HIGH > MEDIUM > LOW)
-                const sortedProjects = [...projects].sort((a, b) => {
-                    const priorityOrder = { HIGH: 1, MEDIUM: 2, LOW: 3 };
-                    return priorityOrder[a.priority] - priorityOrder[b.priority];
-                });
-                
-                // Add projects to the list
-                sortedProjects.forEach(project => {
-                    const projectItem = document.createElement('li');
-                    projectItem.className = 'project-item';
-                    
-                    // Create project header (always visible)
-                    const projectItemHeader = document.createElement('div');
-                    projectItemHeader.className = 'project-item-header';
-                    
-                    const priorityBadge = document.createElement('div');
-                    priorityBadge.className = `project-priority ${priorities[project.priority].color}`;
-                    priorityBadge.innerHTML = project.priority === 'HIGH' ? '!' : project.priority === 'MEDIUM' ? '•' : '-';
-                    
-                    const projectTitle = document.createElement('h3');
-                    projectTitle.className = 'project-title';
-                    projectTitle.textContent = project.name;
-                    
-                    const statusBadge = document.createElement('div');
-                    statusBadge.className = `project-status ${statuses[project.status].color}`;
-                    statusBadge.textContent = statuses[project.status].name;
-                    
-                    projectItemHeader.appendChild(priorityBadge);
-                    projectItemHeader.appendChild(projectTitle);
-                    projectItemHeader.appendChild(statusBadge);
-                    
-                    // Create project details (hidden by default)
-                    const projectDetails = document.createElement('div');
-                    projectDetails.className = 'project-details';
-                    
-                    // Project dates
-                    const projectDates = document.createElement('div');
-                    projectDates.className = 'project-dates';
-                    
-                    const startDate = document.createElement('div');
-                    startDate.innerHTML = `<strong>Start:</strong> ${formatDate(project.startDate)}`;
-                    
-                    const endDate = document.createElement('div');
-                    endDate.innerHTML = `<strong>End:</strong> ${formatDate(project.endDate)}`;
-                    
-                    const daysUntilEnd = getDaysUntil(project.endDate);
-                    let timelineText = '';
-                    
-                    if (daysUntilEnd !== null) {
-                        if (daysUntilEnd > 0) {
-                            timelineText = `<strong>Timeline:</strong> ${daysUntilEnd} days left`;
-                        } else if (daysUntilEnd === 0) {
-                            timelineText = '<strong>Timeline:</strong> Due today';
-                        } else {
-                            timelineText = '<strong>Timeline:</strong> Past due';
-                        }
-                    }
-                    
-                    const timeline = document.createElement('div');
-                    timeline.innerHTML = timelineText;
-                    
-                    projectDates.appendChild(startDate);
-                    projectDates.appendChild(endDate);
-                    if (timelineText) {
-                        projectDates.appendChild(timeline);
-                    }
-                    
-                    // Progress bar
-                    const progressContainer = document.createElement('div');
-                    progressContainer.className = 'project-progress-container';
-                    
-                    const progressLabel = document.createElement('div');
-                    progressLabel.innerHTML = `<strong>Progress:</strong> ${project.progress}%`;
-                    
-                    const statusBar = document.createElement('div');
-                    statusBar.className = 'project-status-bar';
-                    
-                    const progress = document.createElement('div');
-                    progress.className = `project-progress ${getProgressColorClass(project.progress)}`;
-                    progress.style.width = `${project.progress}%`;
-                    
-                    statusBar.appendChild(progress);
-                    progressContainer.appendChild(progressLabel);
-                    progressContainer.appendChild(statusBar);
-                    
-                    // Project notes
-                    const notes = document.createElement('div');
-                    notes.className = 'project-notes';
-                    notes.textContent = project.notes;
-                    
-                    // Project milestones
-                    let milestonesSection = '';
-                    if (project.keyMilestones && project.keyMilestones.length > 0) {
-                        milestonesSection = document.createElement('div');
-                        milestonesSection.className = 'project-milestones';
-                        
-                        const milestonesHeader = document.createElement('h4');
-                        milestonesHeader.textContent = 'Key Milestones';
-                        milestonesSection.appendChild(milestonesHeader);
-                        
-                        project.keyMilestones.forEach(milestone => {
-                            const daysLeft = getDaysUntil(milestone.date);
-                            const milestoneItem = document.createElement('div');
-                            milestoneItem.className = 'milestone-item';
-                            
-                            const milestoneTitle = document.createElement('div');
-                            milestoneTitle.innerHTML = `${milestone.title} - ${formatDate(milestone.date)}`;
-                            
-                            const milestoneDays = document.createElement('div');
-                            milestoneDays.className = `days-left ${daysLeft < 7 && daysLeft >= 0 ? 'days-urgent' : ''}`;
-                            
-                            if (daysLeft !== null) {
-                                if (daysLeft > 0) {
-                                    milestoneDays.textContent = `${daysLeft} days`;
-                                } else if (daysLeft === 0) {
-                                    milestoneDays.textContent = 'Today';
-                                    milestoneDays.className += ' days-urgent';
-                                } else {
-                                    milestoneDays.textContent = 'Past due';
-                                    milestoneDays.className += ' days-urgent';
-                                }
-                            }
-                            
-                            milestoneItem.appendChild(milestoneTitle);
-                            milestoneItem.appendChild(milestoneDays);
-                            milestonesSection.appendChild(milestoneItem);
-                        });
-                    }
-                    
-                    // Add all elements to details
-                    projectDetails.appendChild(projectDates);
-                    projectDetails.appendChild(progressContainer);
-                    projectDetails.appendChild(notes);
-                    if (milestonesSection) {
-                        projectDetails.appendChild(milestonesSection);
-                    }
-                    
-                    // Add click event to toggle details
-                    projectItemHeader.addEventListener('click', () => {
-                        projectDetails.classList.toggle('active');
-                    });
-                    
-                    // Add all elements to project item
-                    projectItem.appendChild(projectItemHeader);
-                    projectItem.appendChild(projectDetails);
-                    
-                    // Add project to list
-                    projectList.appendChild(projectItem);
-                });
-                
-                // Add project list to accordion content
-                accordionContent.appendChild(projectList);
-                
-                // Add accordion elements to container
-                accordionSection.appendChild(accordionHeader);
-                accordionSection.appendChild(accordionContent);
-                
-                // Add accordion to page
-                accordionsContainer.appendChild(accordionSection);
-                
-                // Open first accordion by default
-                if (categoryInfo.order === 1) {
-                    accordionHeader.classList.add('active');
-                    accordionContent.classList.add('active');
-                }
-            });
-        }
-
-        // Render upcoming milestones
-        function renderMilestones() {
-            milestonesContainer.innerHTML = '';
-            
-            const milestones = projectsData
-                .flatMap(project => 
-                    project.keyMilestones?.map(milestone => ({
-                        projectName: project.name,
-                        projectCategory: project.category,
-                        ...milestone,
-                        daysLeft: getDaysUntil(milestone.date)
-                    })) || []
-                )
-                .filter(milestone => milestone.daysLeft !== null && milestone.daysLeft >= 0)
-                .sort((a, b) => new Date(a.date) - new Date(b.date))
-                .slice(0, 5);
-                
-            milestones.forEach(milestone => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>${milestone.projectName}</td>
-                    <td>${milestone.title}</td>
-                    <td>${formatDate(milestone.date)}</td>
-                    <td class="days-left ${milestone.daysLeft < 7 ? 'days-urgent' : ''}">
-                        ${milestone.daysLeft === 0 ? 'Today' : `${milestone.daysLeft} days`}
-                    </td>
-                `;
-                
-                milestonesContainer.appendChild(row);
-            });
-        }
-
-        // Render metrics
-        function renderMetrics() {
-            // Category metrics
-            categoryMetricsContainer.innerHTML = '';
-            
-            Object.entries(categories).forEach(([key, { name, icon }]) => {
-                const count = projectsData.filter(p => p.category === key).length;
-                
-                if (count === 0) return; // Skip empty categories
-                
-                const metricItem = document.createElement('div');
-                metricItem.className = 'metric-item';
-                metricItem.innerHTML = `
-                    <span>${icon} ${name}</span>
-                    <span>${count}</span>
-                `;
-                
-                categoryMetricsContainer.appendChild(metricItem);
-            });
-            
-            // Priority metrics
-            priorityMetricsContainer.innerHTML = '';
-            
-            Object.entries(priorities).forEach(([key, { name, color }]) => {
-                const count = projectsData.filter(p => p.priority === key).length;
-                
-                const metricItem = document.createElement('div');
-                metricItem.className = 'metric-item';
-                metricItem.innerHTML = `
-                    <span>${key === 'HIGH' ? '!' : key === 'MEDIUM' ? '•' : '-'} ${name}</span>
-                    <span>${count}</span>
-                `;
-                
-                priorityMetricsContainer.appendChild(metricItem);
-            });
-            
-            // Status metrics
-            statusMetricsContainer.innerHTML = '';
-            
-            Object.entries(statuses).forEach(([key, { name, color }]) => {
-                const count = projectsData.filter(p => p.status === key).length;
-                
-                const metricItem = document.createElement('div');
-                metricItem.className = 'metric-item';
-                metricItem.innerHTML = `
-                    <span>${name}</span>
-                    <span>${count}</span>
-                `;
-                
-                statusMetricsContainer.appendChild(metricItem);
-            });
-        }
-
-        // Initialize
-        function init() {
-            renderAccordions();
-            renderMetrics();
-            renderMilestones();
-        }
-
-        // Run initialization
-        init();
-    </script>
 </body>
 </html>

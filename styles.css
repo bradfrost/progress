@@ -1,0 +1,330 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Color Variables from Brad's Stylesheet */
+:root {
+    /* Brand Colors from Image */
+    --color-cream: #f6f5de;
+    --color-light-cream: #f8f7e7;
+    --color-tan: #e5e3cb;
+    --color-olive: #a29e5e;
+    --color-brown: #785c41;
+    --color-dark-brown: #100;
+    --color-orange: #be6700;
+    --color-blue: #66ccff;
+    --color-navy: #151340;
+    
+    /* Secondary Colors from Image */
+    --color-rust: #c57644;
+    --color-gold: #c9b84a;
+    --color-mustard: #d2ae4e;
+    
+    /* UI Constants */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    
+    --border-radius: 0px;
+    --box-shadow-standard: 0 10px 0 -5px var(--color-orange), 
+                        0 20px 0 -10px var(--color-blue),
+                        0 30px 0 -16px var(--color-tan);
+}
+
+/* Base Styles */
+body {
+    font-family: "proxima-nova", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-dark-brown);
+    background: var(--color-cream);
+    padding: var(--spacing-xl);
+}
+
+h1, h2, h3, h4 {
+    font-family: "League Gothic", "Oswald", "Impact", sans-serif;
+    text-transform: lowercase;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-md);
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xl);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xs);
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+a {
+    color: var(--color-olive);
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+a:hover, a:focus {
+    color: var(--color-orange);
+}
+
+/* Lists */
+ul {
+    margin-left: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+li {
+    padding: var(--spacing-sm) 0;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Project List Styles */
+.project-list {
+    list-style: none;
+}
+
+.project-item {
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-tan);
+    position: relative;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.project-title {
+    flex: 1;
+    margin: 0;
+    font-size: 1.2rem;
+    position: relative;
+    padding-right: var(--spacing-lg);
+}
+
+.project-priority {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: var(--spacing-sm);
+    border: 2px solid var(--color-dark-brown);
+    flex-shrink: 0;
+}
+
+.priority-high {
+    background: var(--color-orange);
+}
+
+.priority-medium {
+    background: var(--color-gold);
+}
+
+.priority-low {
+    background: var(--color-blue);
+}
+
+.project-status {
+    font-size: 0.8rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    flex-shrink: 0;
+    margin-left: var(--spacing-sm);
+}
+
+.status-not-started {
+    background: var(--color-tan);
+}
+
+.status-in-progress {
+    background: var(--color-gold);
+}
+
+.status-near-completion {
+    background: var(--color-olive);
+    color: white;
+}
+
+.status-completed {
+    background: var(--color-brown);
+    color: white;
+}
+
+.status-on-hold {
+    background: var(--color-rust);
+    color: white;
+}
+
+.project-details {
+    display: none;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    background: rgba(205, 202, 162, 0.1);
+    border-left: 3px solid var(--color-olive);
+}
+
+.project-details.active {
+    display: block;
+}
+
+.project-dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.project-progress-container {
+    margin: var(--spacing-md) 0;
+}
+
+.project-status-bar {
+    height: 10px;
+    background: var(--color-tan);
+    margin-top: var(--spacing-xs);
+    position: relative;
+}
+
+.project-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+.progress-high {
+    background: var(--color-orange);
+}
+
+.progress-medium {
+    background: var(--color-gold);
+}
+
+.progress-low {
+    background: var(--color-olive);
+}
+
+.project-notes {
+    margin-top: var(--spacing-md);
+    font-style: italic;
+}
+
+.project-milestones {
+    margin-top: var(--spacing-md);
+}
+
+.milestone-item {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-xs);
+    padding-top: var(--spacing-xs);
+    border-top: 1px dashed var(--color-tan);
+}
+
+.days-left {
+    font-weight: bold;
+}
+
+.days-urgent {
+    color: var(--color-orange);
+}
+
+/* Dashboard Metrics */
+.metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.metric-card {
+    background: var(--color-light-cream);
+    border: 3px solid var(--color-dark-brown);
+    padding: var(--spacing-md);
+    box-shadow: 0 10px 0 -5px var(--color-tan);
+}
+
+.metric-title {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-olive);
+}
+
+.metric-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-tan);
+}
+
+.metric-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.milestone-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-xxl);
+    border: 3px solid var(--color-dark-brown);
+    box-shadow: var(--box-shadow-standard);
+}
+
+.milestone-table th {
+    text-align: left;
+    padding: var(--spacing-sm);
+    background: rgba(205, 202, 162, 0.16);
+    border-bottom: 3px solid var(--color-dark-brown);
+    font-family: "Oswald", "Impact", sans-serif;
+    text-transform: lowercase;
+    font-weight: normal;
+}
+
+.milestone-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-tan);
+}
+
+.milestone-table tr:last-child td {
+    border-bottom: none;
+}
+
+.milestone-table tbody tr:hover {
+    background: rgba(205, 202, 162, 0.16);
+}
+
+
