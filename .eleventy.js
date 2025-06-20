@@ -4,6 +4,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/script.js");
   eleventyConfig.addPassthroughCopy("src/bf-tokens.css");
   
+  // Set default layout for markdown files
+  eleventyConfig.addGlobalData("layout", "base.njk");
+  
   return {
     dir: {
       input: "src",
