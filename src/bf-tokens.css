@@ -1,0 +1,237 @@
+:root {
+	/**
+   * Tier 1 
+   */
+	--bf-color-brand-orange: #be6700;
+	--bf-color-brand-orange-muted: #c49a3b;
+	--bf-color-brand-orange-dark: #c05e24;
+	--bf-color-brand-blue-light: #80cafa;
+	--bf-color-brand-blue-dark: #0b0049;
+	--bf-color-brand-brown: #110000;
+	--bf-color-brand-brown-light: #403333;
+	--bf-color-brand-brown-extra-light: #887f7f;
+	--bf-color-brand-cream: #f6f5de;
+	--bf-color-brand-cream-dark: #dedcb9;
+	--bf-color-brand-cream-light: #efeed4;
+	--bf-color-brand-cream-extra-dark: #a29e5e;
+	--bf-color-brand-cream-extra-extra-dark: #8e7d58;
+    --bf-color-brand-mustard: #c9b039;
+	--bf-color-white: #ffffff;
+	--bf-color-black: #000000;
+
+	--bf-color-utility-red: #c05e24;
+
+	/* Typography */
+	--bf-font-family-primary: "League Gothic", sans-serif;
+	--bf-font-family-secondary: "Montserrat", sans-serif;
+	--bf-font-size-14: 0.875rem;
+	--bf-font-size-16: 1rem;
+	--bf-font-size-20: 1.25rem;
+	--bf-font-size-24: 1.5rem;
+	--bf-font-size-32: 2rem;
+	--bf-font-size-40: 2.5rem;
+	--bf-font-size-48: 3rem;
+	--bf-font-size-64: 4rem;
+	--bf-font-size-112: 7rem;
+	--bf-font-size-224: 14rem;
+	--bf-font-weight-normal: normal;
+	--bf-font-weight-bold: bold;
+
+	--bf-anim-fade-quick: 0.2s;
+	--bf-anim-ease: ease;
+
+	/**
+   * Tier 2
+   */
+	--bf-theme-color-background-default: var(--bf-color-brand-cream);
+	--bf-theme-color-background-subtle: var(--bf-color-brand-cream-light);
+	--bf-theme-color-background-knockout: var(--bf-color-brand-brown);
+	--bf-theme-color-background-brand: var(--bf-color-brand-orange);
+	--bf-theme-color-background-brand-knockout: var(--bf-color-brand-orange);
+	--bf-theme-color-background-brand-secondary: var(--bf-color-brand-secondary);
+	--bf-theme-color-background-accent: var(--bf-color-brand-blue-light);
+	--bf-theme-color-background-accent-2: var(--bf-color-brand-blue-dark);
+	--bf-theme-color-background-accent-3: var(--bf-color-brand-cream-extra-dark);
+	--bf-theme-color-border-default: var(--bf-color-brand-brown);
+	--bf-theme-color-border-subtle: var(--bf-color-brand-cream-dark);
+	--bf-theme-color-border-brand: var(--bf-color-brand-orange);
+	--bf-theme-color-border-brand-dark: var(--bf-color-brand-cream-extra-dark);
+	--bf-theme-color-border-brand-accent: var(--bf-color-brand-blue-light);
+	--bf-theme-color-border-brand-subtle: var(--bf-color-brand-cream-dark);
+	--bf-theme-color-border-error: var(--bf-color-utility-red);
+	--bf-theme-color-content-default: var(--bf-color-brand-brown);
+	--bf-theme-color-content-brand: var(--bf-color-brand-orange);
+	--bf-theme-color-content-subtle: var(--bf-color-brand-cream-extra-dark);
+	--bf-theme-color-content-knockout: var(--bf-color-brand-cream);
+	--bf-theme-color-content-error: var(--bf-color-utility-red);
+	--bf-theme-color-focus-ring: var(--bf-color-black);
+	--bf-theme-color-focus-ring-inverted: var(--bf-color-brand-cream);
+
+	/* Typography */
+
+	/* Display */
+
+	--bf-theme-typography-display-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-display-font-size: 4.5rem;
+	--bf-theme-typography-display-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-display-line-height: normal;
+	--bf-theme-typography-display-letter-spacing: normal;
+	--bf-theme-typography-display-text-transform: uppercase;
+
+	--bf-theme-typography-display-mobile-font-family: var(
+		--bf-font-family-primary
+	);
+	--bf-theme-typography-display-mobile-font-size: var(--bf-font-size-48);
+	--bf-theme-typography-display-mobile-font-weight: var(
+		--bf-font-weight-normal
+	);
+	--bf-theme-typography-display-mobile-line-height: normal;
+	--bf-theme-typography-display-mobile-letter-spacing: normal;
+	--bf-theme-typography-display-mobile-text-transform: uppercase;
+
+	--bf-theme-typography-headline-lg-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-headline-lg-font-size: var(--bf-font-size-64);
+	--bf-theme-typography-headline-lg-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-headline-lg-letter-spacing: normal;
+	--bf-theme-typography-headline-lg-line-height: normal;
+	--bf-theme-typography-headline-lg-text-transform: uppercase;
+
+	--bf-theme-typography-headline-lg-mobile-font-family: var(
+		--bf-font-family-primary
+	);
+	--bf-theme-typography-headline-lg-mobile-font-size: var(--bf-font-size-40);
+	--bf-theme-typography-headline-lg-mobile-font-weight: var(
+		--bf-font-weight-normal
+	);
+	--bf-theme-typography-headline-lg-mobile-letter-spacing: normal;
+	--bf-theme-typography-headline-lg-mobile-line-height: normal;
+	--bf-theme-typography-headline-lg-mobile-text-transform: uppercase;
+
+	--bf-theme-typography-headline-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-headline-font-size: var(--bf-font-size-48);
+	--bf-theme-typography-headline-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-headline-line-height: normal;
+	--bf-theme-typography-headline-letter-spacing: normal;
+	--bf-theme-typography-headline-text-transform: uppercase;
+
+	--bf-theme-typography-headline-mobile-font-family: var(
+		--bf-font-family-primary
+	);
+	--bf-theme-typography-headline-mobile-font-size: var(--bf-font-size-40);
+	--bf-theme-typography-headline-mobile-font-weight: var(
+		--bf-font-weight-normal
+	);
+	--bf-theme-typography-headline-mobile-line-height: normal;
+	--bf-theme-typography-headline-mobile-letter-spacing: normal;
+	--bf-theme-typography-headline-mobile-text-transform: uppercase;
+
+	--bf-theme-typography-headline-sm-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-headline-sm-font-size: var(--bf-font-size-32);
+	--bf-theme-typography-headline-sm-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-headline-sm-line-height: normal;
+	--bf-theme-typography-headline-sm-letter-spacing: normal;
+	--bf-theme-typography-headline-sm-text-transform: uppercase;
+
+	--bf-theme-typography-headline-sm-mobile-font-family: var(
+		--bf-font-family-primary
+	);
+	--bf-theme-typography-headline-sm-mobile-font-size: var(--bf-font-size-32);
+	--bf-theme-typography-headline-sm-mobile-font-weight: var(
+		--bf-font-weight-normal
+	);
+	--bf-theme-typography-headline-sm-mobile-line-height: normal;
+	--bf-theme-typography-headline-sm-mobile-letter-spacing: normal;
+	--bf-theme-typography-headline-sm-mobile-text-transform: uppercase;
+
+	--bf-theme-typography-title-lg-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-title-lg-font-size: var(--bf-font-size-32);
+	--bf-theme-typography-title-lg-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-title-lg-line-height: normal;
+	--bf-theme-typography-title-lg-letter-spacing: normal;
+	--bf-theme-typography-title-lg-text-transform: uppercase;
+
+	--bf-theme-typography-title-lg-mobile-font-family: var(
+		--bf-font-family-primary
+	);
+	--bf-theme-typography-title-lg-mobile-font-size: var(--bf-font-size-24);
+	--bf-theme-typography-title-lg-mobile-font-weight: var(
+		--bf-font-weight-normal
+	);
+	--bf-theme-typography-title-lg-mobile-line-height: normal;
+	--bf-theme-typography-title-lg-mobile-letter-spacing: normal;
+	--bf-theme-typography-title-lg-mobile-text-transform: uppercase;
+
+	--bf-theme-typography-title-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-title-font-size: var(--bf-font-size-24);
+	--bf-theme-typography-title-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-title-line-height: normal;
+	--bf-theme-typography-title-letter-spacing: normal;
+	--bf-theme-typography-title-text-transform: uppercase;
+
+	--bf-theme-typography-body-lg-font-family: var(--bf-font-family-secondary);
+	--bf-theme-typography-body-lg-font-size: var(--bf-font-size-20);
+	--bf-theme-typography-body-lg-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-body-lg-line-height: normal;
+	--bf-theme-typography-body-lg-letter-spacing: normal;
+	--bf-theme-typography-body-lg-text-transform: none;
+
+	--bf-theme-typography-body-font-family: var(--bf-font-family-secondary);
+	--bf-theme-typography-body-font-size: var(--bf-font-size-16);
+	--bf-theme-typography-body-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-body-line-height: 1.4;
+	--bf-theme-typography-body-letter-spacing: normal;
+	--bf-theme-typography-body-text-transform: none;
+
+	--bf-theme-typography-body-sm-font-family: var(--bf-font-family-secondary);
+	--bf-theme-typography-body-sm-font-size: var(--bf-font-size-14);
+	--bf-theme-typography-body-sm-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-body-sm-line-height: normal;
+	--bf-theme-typography-body-sm-letter-spacing: normal;
+	--bf-theme-typography-body-sm-text-transform: none;
+
+	--bf-theme-typography-label-lg-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-label-lg-font-size: var(--bf-font-size-24);
+	--bf-theme-typography-label-lg-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-label-lg-line-height: normal;
+	--bf-theme-typography-label-lg-letter-spacing: normal;
+	--bf-theme-typography-label-lg-text-transform: uppercase;
+
+	--bf-theme-typography-label-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-label-font-size: var(--bf-font-size-20);
+	--bf-theme-typography-label-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-label-line-height: normal;
+	--bf-theme-typography-label-letter-spacing: normal;
+	--bf-theme-typography-label-text-transform: uppercase;
+
+	--bf-theme-typography-button-lg-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-button-lg-font-size: var(--bf-font-size-20);
+	--bf-theme-typography-button-lg-font-weight: var(--bf-font-weight-bold);
+	--bf-theme-typography-button-lg-line-height: normal;
+	--bf-theme-typography-button-lg-letter-spacing: normal;
+	--bf-theme-typography-button-lg-text-transform: uppercase;
+
+	--bf-theme-typography-button-font-family: var(--bf-font-family-primary);
+	--bf-theme-typography-button-font-size: var(--bf-font-size-20);
+	--bf-theme-typography-button-font-weight: var(--bf-font-weight-normal);
+	--bf-theme-typography-button-line-height: normal;
+	--bf-theme-typography-button-letter-spacing: normal;
+	--bf-theme-typography-button-text-transform: uppercase;
+
+	/* Border radius */
+	--bf-theme-border-radius-sm: 0.5rem;
+	--bf-theme-border-radius: 0.5rem;
+	--bf-theme-border-radius-lg: 0;
+
+	/* Tier 3 */
+	/* Component Colors */
+	--bf-component-button-color-background: var(--bf-color-brand-orange);
+	--bf-component-button-color-content: var(--bf-color-brand-cream);
+	--bf-component-button-hover-color-content: var(--bf-color-white);
+
+	/* Component Typography */
+	--bf-component-logo-title-font-size: clamp(4rem, 29vw, 17rem);
+	--bf-component-logo-subtitle-font-size: clamp(1.5rem, 8.2vw, 4.7rem);
+	--bf-component-logo-wall-svg-fill: var(
+		--bf-color-brand-cream-extra-extra-dark
+	);
+}

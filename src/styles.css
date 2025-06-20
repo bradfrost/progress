@@ -1,3 +1,6 @@
+/* Import Brad Frost Design Tokens */
+@import url('./bf-tokens.css');
+
 /* Reset */
 * {
     box-sizing: border-box;
@@ -7,21 +10,21 @@
 
 /* Color Variables from Brad's Stylesheet */
 :root {
-    /* Brand Colors from Image */
-    --color-cream: #f6f5de;
-    --color-light-cream: #f8f7e7;
-    --color-tan: #e5e3cb;
-    --color-olive: #a29e5e;
-    --color-brown: #785c41;
-    --color-dark-brown: #100;
-    --color-orange: #be6700;
-    --color-blue: #66ccff;
-    --color-navy: #151340;
+    /* Brand Colors from Image - Updated to use bf-tokens */
+    --color-cream: var(--bf-color-brand-cream);
+    --color-light-cream: var(--bf-color-brand-cream-light);
+    --color-tan: var(--bf-color-brand-cream-dark);
+    --color-olive: var(--bf-color-brand-cream-extra-dark);
+    --color-brown: var(--bf-color-brand-cream-extra-extra-dark);
+    --color-dark-brown: var(--bf-color-brand-brown);
+    --color-orange: var(--bf-color-brand-orange);
+    --color-blue: var(--bf-color-brand-blue-light);
+    --color-navy: var(--bf-color-brand-blue-dark);
     
     /* Secondary Colors from Image */
-    --color-rust: #c57644;
-    --color-gold: #c9b84a;
-    --color-mustard: #d2ae4e;
+    --color-rust: var(--bf-color-brand-orange-dark);
+    --color-gold: var(--bf-color-brand-mustard);
+    --color-mustard: var(--bf-color-brand-mustard);
     
     /* UI Constants */
     --spacing-xs: 0.25rem;
@@ -31,52 +34,52 @@
     --spacing-xl: 2rem;
     --spacing-xxl: 3rem;
     
-    --border-radius: 0px;
-    --box-shadow-standard: 0 10px 0 -5px var(--color-orange), 
-                        0 20px 0 -10px var(--color-blue),
-                        0 30px 0 -16px var(--color-tan);
+    --border-radius: var(--bf-theme-border-radius);
+    --box-shadow-standard: 0 10px 0 -5px var(--bf-color-brand-orange), 
+                        0 20px 0 -10px var(--bf-color-brand-blue-light),
+                        0 30px 0 -16px var(--bf-color-brand-cream-dark);
 }
 
 /* Base Styles */
 body {
-    font-family: "proxima-nova", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--color-dark-brown);
-    background: var(--color-cream);
+    font-family: var(--bf-theme-typography-body-font-family);
+    font-size: var(--bf-theme-typography-body-font-size);
+    line-height: var(--bf-theme-typography-body-line-height);
+    color: var(--bf-theme-color-content-default);
+    background: var(--bf-theme-color-background-default);
     padding: var(--spacing-xl);
 }
 
 h1, h2, h3, h4 {
-    font-family: "League Gothic", "Oswald", "Impact", sans-serif;
-    text-transform: lowercase;
-    line-height: 1.2;
+    font-family: var(--bf-theme-typography-headline-font-family);
+    text-transform: var(--bf-theme-typography-headline-text-transform);
+    line-height: var(--bf-theme-typography-headline-line-height);
     margin-bottom: var(--spacing-md);
 }
 
 h1 {
-    font-size: 2.5rem;
+    font-size: var(--bf-theme-typography-headline-lg-font-size);
     margin-bottom: var(--spacing-xl);
 }
 
 h2 {
-    font-size: 2rem;
+    font-size: var(--bf-theme-typography-headline-font-size);
     margin-top: var(--spacing-xl);
     padding-bottom: var(--spacing-xs);
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: var(--bf-theme-typography-title-font-size);
 }
 
 a {
-    color: var(--color-olive);
+    color: var(--bf-theme-color-content-brand);
     text-decoration: none;
-    transition: all 0.15s ease;
+    transition: all var(--bf-anim-fade-quick) var(--bf-anim-ease);
 }
 
 a:hover, a:focus {
-    color: var(--color-orange);
+    color: var(--bf-color-brand-orange-dark);
 }
 
 /* Lists */
