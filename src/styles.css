@@ -47,7 +47,7 @@ body {
     line-height: var(--bf-theme-typography-body-line-height);
     color: var(--bf-theme-color-content-default);
     background: var(--bf-theme-color-background-default);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
 }
 
 h1, h2, h3, h4 {
@@ -84,8 +84,9 @@ a:hover, a:focus {
 
 /* Lists */
 ul {
-    margin-left: var(--spacing-xl);
-    margin-bottom: var(--spacing-xl);
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 li {
@@ -96,10 +97,63 @@ li:last-child {
     border-bottom: none;
 }
 
+/* Horizontal rule styling */
+hr {
+    border: none;
+    height: 2px;
+    background: var(--bf-color-brand-cream-dark);
+    margin: var(--spacing-xxl) 0;
+}
+
 /* Layout */
 .container {
-    max-width: 1200px;
     margin: 0 auto;
+}
+
+/* Multi-column layout for large screens */
+@media (min-width: 1200px) {
+    /* Section grids for top and bottom sections */
+    .section-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-xl);
+        align-items: start;
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    /* Priority section spans full width at top */
+    .priority {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .section-wrapper h2 {
+        margin-top: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+    .section-grid {
+        display: block;
+    }
+    
+    .priority {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    .section-wrapper {
+        margin-bottom: var(--spacing-xl);
+    }
+    
+    hr {
+        border: none;
+        height: 2px;
+        background: var(--color-dark-brown);
+        margin: var(--spacing-xxl) 0;
+    }
 }
 
 /* Project List Styles */
@@ -340,10 +394,88 @@ li:last-child {
 
 .priority h2 {
     color: var(--color-orange);
+    margin: 0;
 }
 
 .priority li:last-child {
     margin-bottom: 0;
+}
+
+/* Accordion Styles */
+.accordion {
+    margin-bottom: var(--spacing-sm);
+    overflow: hidden;
+}
+
+.accordion-trigger {
+    width: 100%;
+    background: transparent;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--bf-theme-typography-headline-font-family);
+    font-size: var(--bf-theme-typography-title-font-size);
+    text-transform: var(--bf-theme-typography-headline-text-transform);
+    line-height: var(--bf-theme-typography-headline-line-height);
+    color: var(--bf-theme-color-content-default);
+    position: relative;
+    transition: all var(--bf-anim-fade-quick) var(--bf-anim-ease);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-trigger:hover {
+    color: var(--color-orange);
+}
+
+.accordion-trigger:focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: -3px;
+}
+
+.accordion-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--bf-anim-fade-quick) var(--bf-anim-ease);
+    background: var(--bf-theme-color-background-default);
+}
+
+.accordion-panel.active {
+    max-height: 1000px;
+}
+
+.accordion-panel ul {
+    margin: 0;
+    padding: var(--spacing-sm) 0;
+}
+
+.accordion-panel li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(205, 202, 162, 0.3);
+}
+
+.accordion-panel li:last-child {
+    border-bottom: none;
+}
+
+/* Keyboard navigation support */
+.accordion-trigger:focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: -3px;
+}
+
+/* Screen reader only text for better accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
 
 

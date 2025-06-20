@@ -1,109 +1,133 @@
-## 📺 Courses
+## Courses
 
-### 🔥 Atomic Design Certification Course
+### Atomic Design Certification 🔥
 
-- 🔥 Design website
-- 🔥 Prepare preorder
-- Record Trailer
-- Record preorder video
+- [ ] Design website 🔥
+- [ ] Prepare preorder 🔥 
+- [ ] Record Trailer
+- [ ] Record preorder video
 
 ### The Lost Art of Web Design Course
 
-- Record ongoing video
+- [ ] Record ongoing video
 
 ### Front-of-the-Front-End Course
 
-- Review outline with Ian
-- Design website
-- Prepare preorder
-- Record Trailer
-- Record preorder video
+- [ ] Review outline with Ian
+- [ ] Design website
+- [ ] Prepare preorder
+- [ ] Record Trailer
+- [ ] Record preorder video
 
 ### Subatomic: Design Tokens Course
 
-- Clear board
+- [ ] Clear board
 
-## 📚 Books
+## Writing
 
-### Subatomic: Design Tokens
+### Newsletter 🔥 
 
-- Update website for launch
+- [ ] Integrate Emily's feedback 🔥
+- [ ] Begin priming audience 🔥
+- [ ] Write first newsletter
+
+### Subatomic: Design Tokens Book
+
+- [ ] Update website for launch
 
 ### Atomic Design, 2nd Edition
 
-- Make notes about Atomic Design book
+- [ ] Make notes about Atomic Design book
 
-## 🎙️ Podcasts
+## Podcasts
 
 ### Wake Up Excited Podcast
 
-- Record first episode
-- Set up guest lineup
+- [ ] Record opening episode
+- [ ] Record guest intros
+- [ ] Record Subatomic ad
+- [ ] Organize guest Notion
 
-### OpenUp Podcast with Smashing Magazine
+### Open Up
 
-- Record Episode 2
-- Plan future episodes
+- [ ] Record Episode 2
+- [ ] Plan future episodes
 
 ### Subatomic Design Tokens Podcast
 
-- Record next episode
+- [ ] Record next episode
 
-## 🎤 Speaking
+## Speaking
 
-### UXLx Lisbon
+### SmashingConf Antwerp & Freiberg
+- [ ] Update workshop
+- [ ] Update talk
 
-- Prepare workshop materials
-- Finalize talk slides
+### Beyond Tellerrand
+- [ ] Digitize DVDs
+- [ ] Begin visualizations
+- [ ] Research content
 
-### CSS Day Amsterdam
+## Bizness
 
-- Prepare workshop with Ian
-- Finalize talk slides
+### Apprentice 🔥
+- [ ] Onboard apprentice 🔥
+- [ ] Groom tasks 🔥
+- [ ] Discuss with Wil Stunkl 
 
-### Berlin Speaking Event
+### Email 
 
-- Develop talk outline
-- Research content
+---
 
-## 🎸 Music
+## Music
+
+### Frostapalooza edit 🔥
+- [ ] Line up Fiverr work 🔥
+
+### Frosty Nightz
+
+- [ ] Book next session
+- [ ] Clean up basement
+
+### Seth album
+- [ ] Set up blog
+- [ ] Intro call
+
+### Cold Album Drumming
+- [ ] Edit existing albums
+- [ ] Record new albums
 
 ### Music Collaboration Platform
 
-- Research platform options
-- Define requirements
+- [ ] Research platform options
+- [ ] Define requirements
 
-### 🔥 Frosty Nightz
-
-- Follow up with musicians for May 10th session
-- Clean up basement
-
-## ✍️ Writing
-
-### 🔥 Design Better EIR article
-
-- 🔥 Write article
-
-### Newsletter & Blog Revitalization
-
-- Set up publishing schedule
-- Write first newsletter
-- Update blog design
-
-## 🎨 Art
+## Art
 
 ### Outside The Box
 
-- Develop concept
-- Create initial sketches
+- [ ] Develop concept
+- [ ] Create initial sketches
 
 ### With Utmost Sincerity
 
-- Plan series
-- Start first piece
+- [ ] Plan series
+- [ ] Start first piece
 
-## 🏔️ Personal
+## Personal
 
-## House
-- Clean art room
-- Build dresser
+### Melissa Birthday Party 🔥
+- [ ] Line up catering 🔥
+- [ ] Guest list 🔥
+- [ ] Video/art prompt 🔥
+- [ ] Gather materials
+
+### 💩
+- [ ] Arrive at settlement 
+
+### House 
+- [ ] Clean art room
+- [ ] Donate items
+- [ ] Build dresser
+- [ ] Build TV built-ins
+- [ ] Sort out record collection
