@@ -395,6 +395,7 @@ hr {
 .priority h2 {
     color: var(--color-orange);
     margin: 0;
+    font-size: 1.6rem;
 }
 
 .priority li:last-child {

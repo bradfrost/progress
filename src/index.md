@@ -41,11 +41,12 @@
 
 ## Podcasts
 
-### Wake Up Excited Podcast
+### Wake Up Excited Podcast 🔥
 
-- [ ] Record opening episode
-- [ ] Record guest intros
-- [ ] Record Subatomic ad
+- [ ] Record opening episode 🔥
+- [ ] Record guest intros 🔥
+- [ ] Record Subatomic ad 🔥
+- [ ] Update website
 - [ ] Organize guest Notion
 
 ### Open Up
