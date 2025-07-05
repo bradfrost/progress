@@ -4,8 +4,8 @@
 
 - [ ] Design website 🔥
 - [ ] Prepare preorder 🔥 
-- [ ] Record Trailer
-- [ ] Record preorder video
+- [ ] Record Trailer 🔥
+- [ ] Record preorder video 🔥
 
 ### The Lost Art of Web Design Course
 
@@ -21,46 +21,56 @@
 
 ### Subatomic: Design Tokens Course
 
-- [ ] Clear board
+- [ ] Create marketing clips
+- [ ] Create ROI calculator
+- [ ] Add podcast to Website
 
 ## Writing
 
 ### Newsletter 🔥 
 
-- [ ] Integrate Emily's feedback 🔥
-- [ ] Begin priming audience 🔥
-- [ ] Write first newsletter
+- [ ] Prime audience 🔥
+- [ ] Draft first newsletter 🔥
 
 ### Subatomic: Design Tokens Book
 
+- [ ] Translate video transcript to first draft
 - [ ] Update website for launch
+- [ ] Follow up with Owen Gregory
 
 ### Atomic Design, 2nd Edition
 
-- [ ] Make notes about Atomic Design book
+- [ ] Translate course into 
+- [ ] 
 
 ## Podcasts
 
 ### Wake Up Excited Podcast 🔥
 
-- [ ] Record opening episode 🔥
 - [ ] Record guest intros 🔥
-- [ ] Record Subatomic ad 🔥
-- [ ] Update website
+- [ ] Intro Music
+- [ ] Intro animation
+- [ ] Update website with episodes
+- [ ] Prepare website for launch
 - [ ] Organize guest Notion
 
 ### Open Up
 
-- [ ] Record Episode 2
 - [ ] Plan future episodes
+- [ ] Create podcast format
 
 ### Subatomic Design Tokens Podcast
-
 - [ ] Record next episode
 
 ## Speaking
 
+### CMU workshop 🔥
+- [ ] Prepare workshop 🔥
+- [ ] Deliver workshop 🔥
+- [ ] Invoice
+
 ### SmashingConf Antwerp & Freiberg
+- [ ] Talk to mom about travel
 - [ ] Update workshop
 - [ ] Update talk
 
@@ -71,28 +81,28 @@
 
 ## Bizness
 
-### Apprentice 🔥
-- [ ] Onboard apprentice 🔥
-- [ ] Groom tasks 🔥
-- [ ] Discuss with Wil Stunkl 
-
 ### Email 
+- [ ] Starred emails
 
 ---
 
 ## Music
 
 ### Frostapalooza edit 🔥
-- [ ] Line up Fiverr work 🔥
-
-### Frosty Nightz
-
-- [ ] Book next session
-- [ ] Clean up basement
+- [ ] Receive mix from Fiverr Alex 🔥
+- [ ] Edit footage
 
 ### Seth album
 - [ ] Set up blog
 - [ ] Intro call
+
+### Solo album
+- [ ] Wrangle video/audio recordings from trip
+- [ ] Set up Logic files
+- [ ] Chip away at songs
+
+### Frosty Nightz
+- [ ] Book next session
 
 ### Cold Album Drumming
 - [ ] Edit existing albums
@@ -107,24 +117,22 @@
 
 ### Outside The Box
 
-- [ ] Develop concept
-- [ ] Create initial sketches
-
 ### With Utmost Sincerity
 
 - [ ] Plan series
-- [ ] Start first piece
+- [ ] Goodwill shopping
+- [ ] Create composition
+- [ ] Affix to doors
 
 ## Personal
 
 ### Melissa Birthday Party 🔥
 - [ ] Line up catering 🔥
 - [ ] Guest list 🔥
-- [ ] Video/art prompt 🔥
 - [ ] Gather materials
 
-### 💩
-- [ ] Arrive at settlement 
+### 💩 🔥
+- [ ] Arrive at settlement 🔥
 
 ### House 
 - [ ] Clean art room
