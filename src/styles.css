@@ -390,6 +390,9 @@ hr {
     border: 2px solid var(--color-orange);
     padding: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-sm);
 }
 
 .priority h2 {
@@ -451,10 +454,15 @@ hr {
     padding: var(--spacing-sm) 0;
 }
 
-.accordion-panel li {
+ul > li {
     padding: var(--spacing-sm) 0;
     border-bottom: 1px solid rgba(205, 202, 162, 0.3);
+    display: flex;
+    gap: var(--spacing-sm);
+
 }
+
+
 
 .accordion-panel li:last-child {
     border-bottom: none;

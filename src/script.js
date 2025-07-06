@@ -248,19 +248,55 @@ function handlePriorityItems() {
     
     // Create the priority section structure
     categoryMap.forEach((items, category) => {
+        // Create category wrapper div
+        const categoryWrapper = document.createElement('div');
+        categoryWrapper.className = 'priority-category';
+        
         // Create category heading
         const categoryHeading = document.createElement('h2');
         categoryHeading.textContent = category;
-        priorityDiv.appendChild(categoryHeading);
+        categoryWrapper.appendChild(categoryHeading);
         
         // Create list for this category
         const categoryList = document.createElement('ul');
-        items.forEach(itemText => {
+        categoryList.className = 'priority-list';
+        
+        items.forEach((itemText, index) => {
             const listItem = document.createElement('li');
-            listItem.textContent = itemText;
+            listItem.className = 'priority-item';
+            
+            // Create checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.className = 'priority-checkbox';
+            checkbox.id = `priority-checkbox-${category.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+            
+            // Create text wrapper
+            const textWrapper = document.createElement('span');
+            textWrapper.className = 'priority-text';
+            textWrapper.textContent = itemText;
+            textWrapper.style.cursor = 'pointer';
+            textWrapper.setAttribute('for', checkbox.id);
+            
+            // Add checkbox and text to list item
+            listItem.appendChild(checkbox);
+            listItem.appendChild(textWrapper);
+            
+            // Add click handler to the text wrapper
+            textWrapper.addEventListener('click', function(e) {
+                // Don't trigger if clicking on the checkbox itself
+                if (e.target !== checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    // Trigger change event for any listeners
+                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+            
             categoryList.appendChild(listItem);
         });
-        priorityDiv.appendChild(categoryList);
+        
+        categoryWrapper.appendChild(categoryList);
+        priorityDiv.appendChild(categoryWrapper);
     });
 }
 
@@ -268,29 +304,35 @@ function makeTaskTextClickable() {
     // Find all task list items
     const taskItems = document.querySelectorAll('.task-list-item');
     
-    taskItems.forEach(item => {
+    taskItems.forEach((item, index) => {
         // Find the checkbox within this item
         const checkbox = item.querySelector('.task-list-item-checkbox');
         
         if (checkbox) {
-            // Create a wrapper for the text content
-            const textWrapper = document.createElement('span');
-            textWrapper.className = 'task-text';
-            textWrapper.style.cursor = 'pointer';
+            // Ensure checkbox has an ID for accessibility
+            if (!checkbox.id) {
+                checkbox.id = `task-checkbox-${index}`;
+            }
             
-            // Move all text nodes and elements after the checkbox into the wrapper
+            // Create a label for the text content
+            const textLabel = document.createElement('label');
+            textLabel.className = 'task-text';
+            textLabel.style.cursor = 'pointer';
+            textLabel.setAttribute('for', checkbox.id);
+            
+            // Move all text nodes and elements after the checkbox into the label
             let nextNode = checkbox.nextSibling;
             while (nextNode) {
                 const nodeToMove = nextNode;
                 nextNode = nextNode.nextSibling;
-                textWrapper.appendChild(nodeToMove);
+                textLabel.appendChild(nodeToMove);
             }
             
-            // Add the wrapper after the checkbox
-            item.insertBefore(textWrapper, checkbox.nextSibling);
+            // Add the label after the checkbox
+            item.insertBefore(textLabel, checkbox.nextSibling);
             
-            // Add click handler to the text wrapper
-            textWrapper.addEventListener('click', function(e) {
+            // Add click handler to the label (for additional functionality)
+            textLabel.addEventListener('click', function(e) {
                 // Don't trigger if clicking on the checkbox itself
                 if (e.target !== checkbox) {
                     checkbox.checked = !checkbox.checked;

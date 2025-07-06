@@ -3,9 +3,10 @@
 ### Atomic Design Certification 🔥
 
 - [ ] Design website 🔥
-- [ ] Prepare preorder 🔥 
 - [ ] Record Trailer 🔥
 - [ ] Record preorder video 🔥
+- [ ] Launch 🔥
+- [ ] Announce 🔥
 
 ### The Lost Art of Web Design Course
 
