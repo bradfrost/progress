@@ -28,9 +28,8 @@
 ## Writing
 
 ### Newsletter 🔥 
-
-- [ ] Prime audience 🔥
 - [ ] Draft first newsletter 🔥
+- [ ] Send first newsletter 🔥
 
 ### Subatomic: Design Tokens Book
 
@@ -48,10 +47,10 @@
 ### Wake Up Excited Podcast 🔥
 
 - [ ] Record guest intros 🔥
-- [ ] Intro Music
-- [ ] Intro animation
+- [ ] Intro animation  🔥
+- [ ] Descript template  🔥
+- [ ] Prepare website for launch  🔥
 - [ ] Update website with episodes
-- [ ] Prepare website for launch
 - [ ] Organize guest Notion
 
 ### Open Up
@@ -60,6 +59,7 @@
 - [ ] Create podcast format
 
 ### Subatomic Design Tokens Podcast
+- [ ] Prepare for publishing
 - [ ] Record next episode
 
 ## Speaking
@@ -89,8 +89,8 @@
 ## Music
 
 ### Frostapalooza edit 🔥
-- [ ] Receive mix from Fiverr Alex 🔥
-- [ ] Edit footage
+- [ ] Import mix into Adobe Premiere  🔥
+- [ ] Edit multicam video  🔥
 
 ### Seth album
 - [ ] Set up blog
@@ -123,6 +123,7 @@
 - [ ] Goodwill shopping
 - [ ] Create composition
 - [ ] Affix to doors
+- [ ] Explore public art space
 
 ## Personal
 
