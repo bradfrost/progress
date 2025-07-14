@@ -3,8 +3,6 @@
 ### Atomic Design Certification 🔥
 
 - [ ] Design website 🔥
-- [ ] Record Trailer 🔥
-- [ ] Record preorder video 🔥
 - [ ] Launch 🔥
 - [ ] Announce 🔥
 
@@ -49,14 +47,12 @@
 
 - [ ] Record guest intros 🔥
 - [ ] Intro animation  🔥
-- [ ] Descript template  🔥
 - [ ] Prepare website for launch  🔥
 - [ ] Update website with episodes
 - [ ] Organize guest Notion
 
 ### Open Up
 
-- [ ] Plan future episodes
 - [ ] Create podcast format
 
 ### Subatomic Design Tokens Podcast
@@ -64,11 +60,6 @@
 - [ ] Record next episode
 
 ## Speaking
-
-### CMU workshop 🔥
-- [ ] Prepare workshop 🔥
-- [ ] Deliver workshop 🔥
-- [ ] Invoice
 
 ### SmashingConf Antwerp & Freiberg
 - [ ] Talk to mom about travel
@@ -128,9 +119,10 @@
 
 ## Personal
 
-### Melissa Birthday Party 🔥
+### Melissa Birthday 🔥
 - [ ] Line up catering 🔥
 - [ ] Guest list 🔥
+- [ ] Photo book 🔥
 - [ ] Gather materials
 
 ### 💩 🔥
