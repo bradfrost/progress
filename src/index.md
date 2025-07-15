@@ -46,7 +46,6 @@
 ### Wake Up Excited Podcast 🔥
 
 - [ ] Record guest intros 🔥
-- [ ] Intro animation  🔥
 - [ ] Prepare website for launch  🔥
 - [ ] Update website with episodes
 - [ ] Organize guest Notion
