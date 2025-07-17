@@ -5,6 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    accent-color: var(--bf-theme-color-background-brand);
 }
 
 /* Base Styles */
@@ -27,13 +28,13 @@ h1, h2, h3, h4 {
 
 h1, .big-title {
     font-size: var(--bf-theme-typography-headline-lg-font-size);
-    margin-bottom: 2rem;
+    margin: 0 0 2rem;
 }
 
 h2 {
     font-size: var(--bf-theme-typography-headline-sm-font-size);
     color: var(--bf-theme-color-content-brand);
-    margin-top: 2rem;
+    margin: 0;
     padding-bottom: 0.25rem;
 }
 
@@ -56,6 +57,8 @@ ul {
 
 li {
     padding: 0.5rem 0;
+    display: flex;
+    gap: 0.5rem;
 }
 
 li:last-child {
@@ -70,10 +73,23 @@ hr {
     margin: 3rem 0;
 }
 
+input[type="checkbox"] {
+    accent-color: var(--bf-theme-color-background-brand);
+    border: 1px solid var(--bf-theme-color-border-knockout);
+    background: none;
+    border-radius: 1rem;
+    opacity: 0.3;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+input[type="checkbox"]:checked {
+    opacity: 1;
+}
+
 /* Layout */
 .container {
     display: grid;
-    gap: 2rem;
     min-height: 100vh;
 }
 
@@ -101,12 +117,48 @@ hr {
 .priority {
     background: var(--bf-theme-color-background-knockout);
     color: var(--bf-theme-color-content-knockout);
-    padding: 1.5rem;
+    padding: 3rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
 
-.priority ul {
-    margin-bottom: 2rem;
+.priority::-webkit-scrollbar {
+    width: 6px;
 }
+
+.priority::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.priority::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.priority::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.priority-category {
+    border: 4px dotted rgba(255, 255, 255, 0.3);
+    border-radius: var(--bf-theme-border-radius);
+    background: transparent;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    transition: all var(--bf-anim-fade-quick) var(--bf-anim-ease);
+}
+
+/* Change background when all checkboxes in the category are checked */
+.priority-category:has(input[type="checkbox"]:checked):not(:has(input[type="checkbox"]:not(:checked))) {
+    background: var(--bf-theme-color-background-brand);
+    border-color: var(--bf-theme-color-border-brand);
+    color: var(--bf-theme-color-content-knockout);
+}
+
+.priority-category:has(input[type="checkbox"]:checked):not(:has(input[type="checkbox"]:not(:checked))) h2 {
+    color: var(--bf-theme-color-content-knockout);
+}
+
 
 @media (min-width: 800px) {
     .priority {
@@ -115,21 +167,34 @@ hr {
         position: fixed;
         top: 0;
         left: 0;
-        width: 33%;
+        width: 33%;        
     }
 }
 
+.priority h1 {
+    color: var(--bf-theme-color-content-accent);
+}
+
 .priority h2 {
-    color: var(--bf-theme-color-content-knockout);
-    margin: 0;
-    font-size: 1.6rem;
-    opacity: 0.5;
+    color: var(--bf-color-brand-mustard);
+}
+
+.content {
+    padding: 3rem;
 }
 
 /* Accordion Styles */
 .accordion {
     margin-bottom: 0.5rem;
     overflow: hidden;
+    padding: 1rem;
+    border-radius: var(--bf-theme-border-radius);
+    border: 4px dotted var(--bf-theme-color-border-subtle);
+}
+
+.accordion:has(.accordion-trigger[aria-expanded="true"]) {
+    border-color: var(--bf-theme-color-border-brand);
+    background: var(--bf-theme-color-background-subtle);
 }
 
 .accordion-trigger {
@@ -163,7 +228,6 @@ hr {
     max-height: 0;
     overflow: hidden;
     transition: max-height var(--bf-anim-fade-quick) var(--bf-anim-ease);
-    background: var(--bf-theme-color-background-default);
 }
 
 .accordion-panel.active {
@@ -175,13 +239,7 @@ hr {
     padding: 0.5rem 0;
 }
 
-ul > li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(205, 202, 162, 0.3);
-    display: flex;
-    gap: 0.5rem;
 
-}
 
 
 

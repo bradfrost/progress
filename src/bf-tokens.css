@@ -64,6 +64,7 @@
 	--bf-theme-color-content-subtle: var(--bf-color-brand-cream-extra-dark);
 	--bf-theme-color-content-knockout: var(--bf-color-brand-cream);
 	--bf-theme-color-content-error: var(--bf-color-utility-red);
+	--bf-theme-color-content-accent: var(--bf-color-brand-blue-light);
 	--bf-theme-color-focus-ring: var(--bf-color-black);
 	--bf-theme-color-focus-ring-inverted: var(--bf-color-brand-cream);
 

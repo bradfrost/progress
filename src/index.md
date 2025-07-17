@@ -34,8 +34,8 @@
 - Wake Up Excited! Announcement 🔥
 - Newsletter Announcement 🔥
 
-### Newsletter 🔥 
-- Draft new edition 🔥
+### Newsletter 
+- Draft new edition
 
 ### Subatomic: Design Tokens Book
 
@@ -72,6 +72,10 @@
 
 ## Speaking
 
+### DBS Talk 🔥
+- Review Edison's notes 🔥
+- Prepare slides 🔥
+
 ### SmashingConf Antwerp & Freiberg
 - Talk to mom about travel
 - Update workshop
@@ -86,9 +90,9 @@
 
 ## Bizness
 
-### Assistant 🔥
-- Complete paperwork 🔥
-- Submit payment 🔥
+### Assistant
+- Get onboarded
+- Pick a start date
 
 ### Apprentice 
 - Make regular payments
