@@ -58,6 +58,7 @@ ul {
 li {
     padding: 0.5rem 0;
     display: flex;
+    align-items: center;
     gap: 0.5rem;
 }
 
@@ -71,6 +72,7 @@ hr {
     height: 2px;
     background: var(--bf-theme-color-border-subtle);
     margin: 3rem 0;
+    display: none;
 }
 
 input[type="checkbox"] {
@@ -85,6 +87,38 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked {
     opacity: 1;
+}
+
+/* Ensure all checkbox labels are block-level elements for better hit area */
+label[for*="checkbox"] {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+/* Specific styling for priority item labels */
+.priority-text {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+/* Specific styling for task list item labels */
+.task-text {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    cursor: pointer;
+}
+
+/* Specific styling for dynamically created list item labels */
+.list-text {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 0;
+    cursor: pointer;
 }
 
 /* Layout */
@@ -140,7 +174,7 @@ input[type="checkbox"]:checked {
 }
 
 .priority-category {
-    border: 4px dotted rgba(255, 255, 255, 0.3);
+    border: 2px dotted rgba(255, 255, 255, 0.3);
     border-radius: var(--bf-theme-border-radius);
     background: transparent;
     padding: 1rem;
@@ -189,7 +223,7 @@ input[type="checkbox"]:checked {
     overflow: hidden;
     padding: 1rem;
     border-radius: var(--bf-theme-border-radius);
-    border: 4px dotted var(--bf-theme-color-border-subtle);
+    border: 2px dotted var(--bf-theme-color-border-subtle);
 }
 
 .accordion:has(.accordion-trigger[aria-expanded="true"]) {

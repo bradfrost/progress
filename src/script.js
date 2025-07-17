@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create accordions from h3 + ul pairs
     createAccordions();
     
+    // Convert all list items to checkboxes
+    convertListItemsToCheckboxes();
+    
     // Handle priority items (existing functionality)
     handlePriorityItems();
     
@@ -214,6 +217,53 @@ function handleAccordionKeyboard(e, button) {
     }
 }
 
+function convertListItemsToCheckboxes() {
+    // Find all list items within content__inner that don't already have checkboxes
+    const contentInner = document.querySelector('.content__inner');
+    const listItems = contentInner.querySelectorAll('li:not(.priority-item):not(.task-list-item)');
+    
+    listItems.forEach((item, index) => {
+        // Skip if this item already has a checkbox
+        if (item.querySelector('input[type="checkbox"]')) {
+            return;
+        }
+        
+        // Get the text content of the list item
+        const itemText = item.textContent.trim();
+        
+        // Create a unique ID for the checkbox
+        const checkboxId = `list-checkbox-${index}`;
+        
+        // Create checkbox
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.className = 'list-checkbox';
+        checkbox.id = checkboxId;
+        
+        // Create label for the text content
+        const textLabel = document.createElement('label');
+        textLabel.className = 'list-text';
+        textLabel.textContent = itemText;
+        textLabel.style.cursor = 'pointer';
+        textLabel.setAttribute('for', checkboxId);
+        
+        // Clear the list item and add checkbox and label
+        item.innerHTML = '';
+        item.appendChild(checkbox);
+        item.appendChild(textLabel);
+        
+        // Add click handler to the label
+        textLabel.addEventListener('click', function(e) {
+            // Don't trigger if clicking on the checkbox itself
+            if (e.target !== checkbox) {
+                checkbox.checked = !checkbox.checked;
+                // Trigger change event for any listeners
+                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+            }
+        });
+    });
+}
+
 function handlePriorityItems() {
     // Get all list items within content__inner
     const contentInner = document.querySelector('.content__inner');
@@ -225,7 +275,12 @@ function handlePriorityItems() {
     
     // Find items with 🔥 and group them by category
     listItems.forEach(item => {
-        if (item.textContent.includes('🔥')) {
+        // Check if the item or its label contains 🔥
+        const itemText = item.textContent || '';
+        const label = item.querySelector('label');
+        const labelText = label ? label.textContent || '' : '';
+        
+        if (itemText.includes('🔥') || labelText.includes('🔥')) {
             // Get the category name from the accordion trigger before the parent ul
             const parentUl = item.parentElement;
             const accordionPanel = parentUl.closest('.accordion-panel');
@@ -240,7 +295,9 @@ function handlePriorityItems() {
             if (!categoryMap.has(categoryName)) {
                 categoryMap.set(categoryName, []);
             }
-            categoryMap.get(categoryName).push(item.textContent.replace('🔥', '').trim());
+            // Use the text from the label if available, otherwise from the item
+            const textToAdd = labelText.includes('🔥') ? labelText.replace('🔥', '').trim() : itemText.replace('🔥', '').trim();
+            categoryMap.get(categoryName).push(textToAdd);
         }
     });
     
@@ -269,8 +326,8 @@ function handlePriorityItems() {
             checkbox.className = 'priority-checkbox';
             checkbox.id = `priority-checkbox-${category.replace(/\s+/g, '-').toLowerCase()}-${index}`;
             
-            // Create text wrapper
-            const textWrapper = document.createElement('span');
+            // Create text wrapper as a proper label
+            const textWrapper = document.createElement('label');
             textWrapper.className = 'priority-text';
             textWrapper.textContent = itemText;
             textWrapper.style.cursor = 'pointer';

@@ -134,6 +134,7 @@
 ## Art
 
 ### Outside The Box
+- Clean up paint
 
 ### With Utmost Sincerity
 
