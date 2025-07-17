@@ -15,10 +15,15 @@
 </head>
 <body>
     <div class="container">
-    <div class="priority"></div>
-    
+        <div class="sidebar">
+            <div class="priority"><h1 class="big-title">DO THIS NOW</div>
+        </div>
+    <div class="content">
+        <h2 class="big-title">All The Thingz</h2>
+        <div class="content__inner">
         {{ content | safe }}
-
+        </div>
+    </div>
     </div>
     <script src="/script.js"></script>
 </body>

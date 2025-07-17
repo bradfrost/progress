@@ -14,10 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function createSectionWrappers() {
     const container = document.querySelector('.container');
-    const h2Elements = container.querySelectorAll('h2');
+    const contentDiv = container.querySelector('.content');
+    const contentInner = contentDiv.querySelector('.content__inner');
+    const h2Elements = contentInner.querySelectorAll('h2');
     
-    // Find the horizontal rule (hr element)
-    const hrElement = container.querySelector('hr');
+    // Find the horizontal rule (hr element) within the content inner div
+    const hrElement = contentInner.querySelector('hr');
     
     // Create two grid containers
     const topGrid = document.createElement('div');
@@ -38,7 +40,7 @@ function createSectionWrappers() {
         let isAfterHr = false;
         if (hrElement) {
             let currentElement = h2;
-            while (currentElement && currentElement !== container) {
+            while (currentElement && currentElement !== contentInner) {
                 if (currentElement === hrElement) {
                     isAfterHr = true;
                     break;
@@ -54,7 +56,7 @@ function createSectionWrappers() {
                         isAfterHr = true;
                         break;
                     }
-                    sibling = sibling.nextElementSibling;
+                    sibling = sibling.nextSibling;
                 }
             }
         }
@@ -95,23 +97,18 @@ function createSectionWrappers() {
         section.h2.remove();
     });
     
-    // Insert the grids in the correct order
+    // Insert the grids in the correct order within the content inner div
     if (topGrid.children.length > 0) {
-        // Insert top grid after the priority section
-        const prioritySection = container.querySelector('.priority');
-        if (prioritySection) {
-            container.insertBefore(topGrid, prioritySection.nextSibling);
-        } else {
-            container.insertBefore(topGrid, container.firstChild);
-        }
+        // Insert top grid at the beginning of the content inner div
+        contentInner.insertBefore(topGrid, contentInner.firstChild);
     }
     
     if (bottomGrid.children.length > 0) {
         // Insert bottom grid after the hr
         if (hrElement) {
-            container.insertBefore(bottomGrid, hrElement.nextSibling);
+            contentInner.insertBefore(bottomGrid, hrElement.nextSibling);
         } else {
-            container.appendChild(bottomGrid);
+            contentInner.appendChild(bottomGrid);
         }
     }
 }
@@ -218,8 +215,9 @@ function handleAccordionKeyboard(e, button) {
 }
 
 function handlePriorityItems() {
-    // Get all list items
-    const listItems = document.querySelectorAll('li');
+    // Get all list items within content__inner
+    const contentInner = document.querySelector('.content__inner');
+    const listItems = contentInner.querySelectorAll('li');
     const priorityDiv = document.querySelector('.priority');
     
     // Create a map to store items by category
@@ -301,8 +299,9 @@ function handlePriorityItems() {
 }
 
 function makeTaskTextClickable() {
-    // Find all task list items
-    const taskItems = document.querySelectorAll('.task-list-item');
+    // Find all task list items within content__inner
+    const contentInner = document.querySelector('.content__inner');
+    const taskItems = contentInner.querySelectorAll('.task-list-item');
     
     taskItems.forEach((item, index) => {
         // Find the checkbox within this item
