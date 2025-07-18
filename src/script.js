@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Convert all list items to checkboxes
     convertListItemsToCheckboxes();
     
-    // Handle priority items (existing functionality)
+    // Handle priority items (must run after checkbox conversion)
     handlePriorityItems();
     
     // Make task text clickable
@@ -222,7 +222,9 @@ function convertListItemsToCheckboxes() {
     const contentInner = document.querySelector('.content__inner');
     const listItems = contentInner.querySelectorAll('li:not(.priority-item):not(.task-list-item)');
     
-    listItems.forEach((item, index) => {
+    let globalIndex = 0; // Use a global counter to ensure unique IDs
+    
+    listItems.forEach((item) => {
         // Skip if this item already has a checkbox
         if (item.querySelector('input[type="checkbox"]')) {
             return;
@@ -232,7 +234,8 @@ function convertListItemsToCheckboxes() {
         const itemText = item.textContent.trim();
         
         // Create a unique ID for the checkbox
-        const checkboxId = `list-checkbox-${index}`;
+        const checkboxId = `list-checkbox-${globalIndex}`;
+        globalIndex++; // Increment the global counter
         
         // Create checkbox
         const checkbox = document.createElement('input');
@@ -246,11 +249,15 @@ function convertListItemsToCheckboxes() {
         textLabel.textContent = itemText;
         textLabel.style.cursor = 'pointer';
         textLabel.setAttribute('for', checkboxId);
+        textLabel.setAttribute('tabindex', '0'); // Make label focusable for keyboard navigation
         
         // Clear the list item and add checkbox and label
         item.innerHTML = '';
         item.appendChild(checkbox);
         item.appendChild(textLabel);
+        
+        // Verify the association is working
+        console.log(`Created checkbox with ID: ${checkboxId}, label for: ${textLabel.getAttribute('for')}`);
         
         // Add click handler to the label
         textLabel.addEventListener('click', function(e) {
@@ -258,6 +265,16 @@ function convertListItemsToCheckboxes() {
             if (e.target !== checkbox) {
                 checkbox.checked = !checkbox.checked;
                 // Trigger change event for any listeners
+                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                console.log(`Label clicked, checkbox ${checkboxId} is now ${checkbox.checked ? 'checked' : 'unchecked'}`);
+            }
+        });
+        
+        // Add keyboard handler for accessibility
+        textLabel.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                checkbox.checked = !checkbox.checked;
                 checkbox.dispatchEvent(new Event('change', { bubbles: true }));
             }
         });
@@ -272,6 +289,9 @@ function handlePriorityItems() {
     
     // Create a map to store items by category
     const categoryMap = new Map();
+    
+    // Track used IDs to avoid conflicts
+    const usedIds = new Set();
     
     // Find items with 🔥 and group them by category
     listItems.forEach(item => {
@@ -320,11 +340,20 @@ function handlePriorityItems() {
             const listItem = document.createElement('li');
             listItem.className = 'priority-item';
             
-            // Create checkbox
+            // Create checkbox with unique ID
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
             checkbox.className = 'priority-checkbox';
-            checkbox.id = `priority-checkbox-${category.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+            
+            // Generate unique ID
+            let checkboxId = `priority-checkbox-${category.replace(/\s+/g, '-').toLowerCase()}-${index}`;
+            let counter = 1;
+            while (usedIds.has(checkboxId)) {
+                checkboxId = `priority-checkbox-${category.replace(/\s+/g, '-').toLowerCase()}-${index}-${counter}`;
+                counter++;
+            }
+            usedIds.add(checkboxId);
+            checkbox.id = checkboxId;
             
             // Create text wrapper as a proper label
             const textWrapper = document.createElement('label');
@@ -332,10 +361,14 @@ function handlePriorityItems() {
             textWrapper.textContent = itemText;
             textWrapper.style.cursor = 'pointer';
             textWrapper.setAttribute('for', checkbox.id);
+            textWrapper.setAttribute('tabindex', '0'); // Make label focusable for keyboard navigation
             
             // Add checkbox and text to list item
             listItem.appendChild(checkbox);
             listItem.appendChild(textWrapper);
+            
+            // Verify the association is working
+            console.log(`Created priority checkbox with ID: ${checkboxId}, label for: ${textWrapper.getAttribute('for')}`);
             
             // Add click handler to the text wrapper
             textWrapper.addEventListener('click', function(e) {
@@ -343,6 +376,15 @@ function handlePriorityItems() {
                 if (e.target !== checkbox) {
                     checkbox.checked = !checkbox.checked;
                     // Trigger change event for any listeners
+                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+            
+            // Add keyboard handler for accessibility
+            textWrapper.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    checkbox.checked = !checkbox.checked;
                     checkbox.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
@@ -360,14 +402,17 @@ function makeTaskTextClickable() {
     const contentInner = document.querySelector('.content__inner');
     const taskItems = contentInner.querySelectorAll('.task-list-item');
     
-    taskItems.forEach((item, index) => {
+    let taskIndex = 0; // Use a separate counter for task items
+    
+    taskItems.forEach((item) => {
         // Find the checkbox within this item
         const checkbox = item.querySelector('.task-list-item-checkbox');
         
         if (checkbox) {
             // Ensure checkbox has an ID for accessibility
             if (!checkbox.id) {
-                checkbox.id = `task-checkbox-${index}`;
+                checkbox.id = `task-checkbox-${taskIndex}`;
+                taskIndex++;
             }
             
             // Create a label for the text content
@@ -375,6 +420,7 @@ function makeTaskTextClickable() {
             textLabel.className = 'task-text';
             textLabel.style.cursor = 'pointer';
             textLabel.setAttribute('for', checkbox.id);
+            textLabel.setAttribute('tabindex', '0'); // Make label focusable for keyboard navigation
             
             // Move all text nodes and elements after the checkbox into the label
             let nextNode = checkbox.nextSibling;
@@ -387,12 +433,24 @@ function makeTaskTextClickable() {
             // Add the label after the checkbox
             item.insertBefore(textLabel, checkbox.nextSibling);
             
+            // Verify the association is working
+            console.log(`Created task checkbox with ID: ${checkbox.id}, label for: ${textLabel.getAttribute('for')}`);
+            
             // Add click handler to the label (for additional functionality)
             textLabel.addEventListener('click', function(e) {
                 // Don't trigger if clicking on the checkbox itself
                 if (e.target !== checkbox) {
                     checkbox.checked = !checkbox.checked;
                     // Trigger change event for any listeners
+                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+                }
+            });
+            
+            // Add keyboard handler for accessibility
+            textLabel.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    checkbox.checked = !checkbox.checked;
                     checkbox.dispatchEvent(new Event('change', { bubbles: true }));
                 }
             });
