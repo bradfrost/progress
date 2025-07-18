@@ -249,7 +249,6 @@ function convertListItemsToCheckboxes() {
         textLabel.textContent = itemText;
         textLabel.style.cursor = 'pointer';
         textLabel.setAttribute('for', checkboxId);
-        textLabel.setAttribute('tabindex', '0'); // Make label focusable for keyboard navigation
         
         // Clear the list item and add checkbox and label
         item.innerHTML = '';
@@ -259,25 +258,7 @@ function convertListItemsToCheckboxes() {
         // Verify the association is working
         console.log(`Created checkbox with ID: ${checkboxId}, label for: ${textLabel.getAttribute('for')}`);
         
-        // Add click handler to the label
-        textLabel.addEventListener('click', function(e) {
-            // Don't trigger if clicking on the checkbox itself
-            if (e.target !== checkbox) {
-                checkbox.checked = !checkbox.checked;
-                // Trigger change event for any listeners
-                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                console.log(`Label clicked, checkbox ${checkboxId} is now ${checkbox.checked ? 'checked' : 'unchecked'}`);
-            }
-        });
-        
-        // Add keyboard handler for accessibility
-        textLabel.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                checkbox.checked = !checkbox.checked;
-                checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-            }
-        });
+
     });
 }
 
@@ -361,7 +342,6 @@ function handlePriorityItems() {
             textWrapper.textContent = itemText;
             textWrapper.style.cursor = 'pointer';
             textWrapper.setAttribute('for', checkbox.id);
-            textWrapper.setAttribute('tabindex', '0'); // Make label focusable for keyboard navigation
             
             // Add checkbox and text to list item
             listItem.appendChild(checkbox);
@@ -370,24 +350,7 @@ function handlePriorityItems() {
             // Verify the association is working
             console.log(`Created priority checkbox with ID: ${checkboxId}, label for: ${textWrapper.getAttribute('for')}`);
             
-            // Add click handler to the text wrapper
-            textWrapper.addEventListener('click', function(e) {
-                // Don't trigger if clicking on the checkbox itself
-                if (e.target !== checkbox) {
-                    checkbox.checked = !checkbox.checked;
-                    // Trigger change event for any listeners
-                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            });
-            
-            // Add keyboard handler for accessibility
-            textWrapper.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    checkbox.checked = !checkbox.checked;
-                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            });
+
             
             categoryList.appendChild(listItem);
         });
@@ -420,7 +383,6 @@ function makeTaskTextClickable() {
             textLabel.className = 'task-text';
             textLabel.style.cursor = 'pointer';
             textLabel.setAttribute('for', checkbox.id);
-            textLabel.setAttribute('tabindex', '0'); // Make label focusable for keyboard navigation
             
             // Move all text nodes and elements after the checkbox into the label
             let nextNode = checkbox.nextSibling;
@@ -436,24 +398,7 @@ function makeTaskTextClickable() {
             // Verify the association is working
             console.log(`Created task checkbox with ID: ${checkbox.id}, label for: ${textLabel.getAttribute('for')}`);
             
-            // Add click handler to the label (for additional functionality)
-            textLabel.addEventListener('click', function(e) {
-                // Don't trigger if clicking on the checkbox itself
-                if (e.target !== checkbox) {
-                    checkbox.checked = !checkbox.checked;
-                    // Trigger change event for any listeners
-                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            });
-            
-            // Add keyboard handler for accessibility
-            textLabel.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    checkbox.checked = !checkbox.checked;
-                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            });
+
         }
     });
 } 

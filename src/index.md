@@ -1,7 +1,7 @@
 ## Courses
 
 ### Atomic Design Certification 🔥
-
+- Tweak order page 🔥
 - Create outline 🔥
 - Record v2 of preorder content 🔥
 - Set up Slack channel
@@ -98,7 +98,7 @@
 - Make regular payments
 
 ### Email 
-- Starred emails
+- 5 Starred emails 🔥
 
 -------------------------------------------------
 
