@@ -1,7 +1,7 @@
 ## Courses
 
 ### Atomic Design Certification 🔥
-- Tweak order page 🔥
+- Redesign order page 🔥
 - Create outline 🔥
 - Record v2 of preorder content 🔥
 - Set up Slack channel
