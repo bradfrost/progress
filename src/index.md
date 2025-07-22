@@ -99,6 +99,7 @@
 
 ### Email 
 - 5 Starred emails 🔥
+- Customer service emails 🔥
 
 -------------------------------------------------
 
