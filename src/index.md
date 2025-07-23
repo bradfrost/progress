@@ -29,8 +29,6 @@
 ## Writing
 
 ### Blog
-- Announcement post 🔥
-- Atomic Design Course announcement 🔥
 - Wake Up Excited! Announcement 🔥
 - Newsletter Announcement 🔥
 
@@ -71,10 +69,6 @@
 -------------------------------------------------
 
 ## Speaking
-
-### DBS Talk 🔥
-- Review Edison's notes 🔥
-- Prepare slides 🔥
 
 ### SmashingConf Antwerp & Freiberg
 - Talk to mom about travel
