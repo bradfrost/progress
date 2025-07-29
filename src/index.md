@@ -149,8 +149,8 @@
 - Photo book 🔥
 - Gather materials
 
-### 💩 🔥
-- Arrive at settlement 🔥
+### 💩
+- Receive first payment
 
 ### House 
 - Clean art room
