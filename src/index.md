@@ -53,7 +53,6 @@
 ## Podcasts
 
 ### Wake Up Excited Podcast 
-
 - Add episodes to homepage
 - Update subscribe buttons
 - Import/Organize guest Notion
@@ -84,9 +83,9 @@
 
 ## Bizness
 
-### Assistant
+### Athena 🔥
+- Fill out inbox, calendar, and travel docs
 - Get onboarded
-- Pick a start date
 
 ### Apprentice 
 - Make regular payments
